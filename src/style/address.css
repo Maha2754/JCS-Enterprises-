@@ -1,0 +1,102 @@
+.address-page {
+  width: 90%;               /* flexible width for all devices */
+  max-width: 500px;         /* keeps max width for large screens */
+  margin: 60px auto;
+  padding: 30px;
+  border: 1px solid #ddd;
+  background: #fff;
+  box-sizing: border-box;
+  border-radius: 10px;      /* slight rounding for nice look */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* subtle shadow */
+}
+
+.address-page h2 {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 24px;
+}
+
+.address-page input,
+.address-page textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #999;
+  font-size: 14px;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.address-page textarea {
+  resize: none;
+  height: 100px;
+}
+
+.address-page button {
+  width: 100%;
+  padding: 14px;
+  background: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.address-page button:hover {
+  background: #333;
+}
+
+/* ---------------- MOBILE & TABLET ---------------- */
+@media screen and (max-width: 1024px) {  /* tablets */
+  .address-page {
+    padding: 25px;
+  }
+}
+
+@media screen and (max-width: 768px) {  /* small tablets & large phones */
+  .address-page {
+    width: 95%;
+    margin: 40px auto;
+    padding: 20px;
+  }
+
+  .address-page h2 {
+    font-size: 22px;
+  }
+
+  .address-page input,
+  .address-page textarea {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .address-page button {
+    font-size: 15px;
+    padding: 12px;
+  }
+}
+
+@media screen and (max-width: 480px) {  /* mobile */
+  .address-page {
+    width: 95%;
+    margin: 20px auto;
+    padding: 15px;
+  }
+
+  .address-page h2 {
+    font-size: 20px;
+  }
+
+  .address-page input,
+  .address-page textarea {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .address-page button {
+    font-size: 14px;
+    padding: 10px;
+  }
+}

@@ -1,0 +1,64 @@
+html { scroll-behavior: smooth; }
+.festive-page { width: 100%; }
+
+.banner { position: relative; width: 100%; height: 315px; overflow: hidden; }
+.banner img { width: 100%; height: 100%; object-fit: cover; }
+.banner-content { position: absolute; inset:0; display:flex; flex-direction:column; justify-content:center; align-items:center; background: rgba(0,0,0,0.35); color:#fff; }
+.banner-content h1 { font-size:42px; font-weight:600; margin-bottom:8px; }
+.banner-content p { font-size:14px; }
+.banner-content a { color:#fff; text-decoration:none; }
+
+
+.pagination { margin-top:60px; display:flex; justify-content:center; gap:12px; }
+.pagination span { width:36px; height:36px; border-radius:6px; background:#f2e1c1; display:flex; align-items:center; justify-content:center; cursor:pointer; }
+.pagination .active { background:#c9a24d; color:#fff; }
+
+
+/* ===== Tablet View ===== */
+@media screen and (max-width: 1024px) {
+  .banner {
+    height: 250px; /* slightly smaller */
+  }
+
+  .banner-content h1 {
+    font-size: 32px;
+  }
+
+  .banner-content p {
+    font-size: 13px;
+  }
+
+  .pagination span {
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
+  }
+}
+
+/* ===== Mobile View ===== */
+@media screen and (max-width: 768px) {
+  .banner {
+    height: 180px; /* smaller for mobile */
+  }
+
+  .banner-content h1 {
+    font-size: 24px;
+    text-align: center; /* center text */
+  }
+
+  .banner-content p {
+    font-size: 12px;
+    text-align: center;
+    padding: 0 10px; /* prevent overflow */
+  }
+
+  .pagination {
+    gap: 8px; /* smaller gap */
+  }
+
+  .pagination span {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+}

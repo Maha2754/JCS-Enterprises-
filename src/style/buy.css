@@ -1,0 +1,429 @@
+.buy-page {
+  padding: 0px 40px;
+  font-family: Arial, sans-serif;
+}
+
+.buy-top {
+  display: flex;
+  gap: 60px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+/* LEFT SIDE */
+.buy-left {
+    width : 50%;
+ 
+}
+
+.main-img {
+ width: 100%;
+  height: 408px;
+  border: 1px solid #eee;
+  padding: 0;              /* important */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+}
+
+.main-img img {
+  width: 592px;
+  height: 400px;
+  object-fit: contain;
+}
+
+.thumbs {
+ display: flex;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.thumbs img {
+  width: 120px;     /* exact */
+  height: 120px;    /*  exact */
+  border: 1px solid #ddd;
+  padding: 6px;
+  object-fit: contain;
+  cursor: pointer;
+  border-radius :20px;
+
+}
+.thumbs img {
+  transition: transform 0.2s ease;
+}
+
+.thumbs img:hover {
+  transform: scale(1.05);
+}
+
+
+
+/* RIGHT SIDE */
+.buy-right {
+    width : 50%;
+  line-height: 30px;;
+}
+
+.product-title {
+  font-size: 28px;
+  margin-bottom: 12px;
+  margin-top : 15px;
+}
+
+.price-row {
+  margin-bottom: 22px;
+}
+
+.price {
+  font-size: 22px;
+  font-weight: 600;
+  margin-right: 20px;
+}
+
+.offer {
+  font-size: 15px;
+  color: #888;
+}
+
+/* SIZE */
+.size-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.size-btn {
+  padding: 6px 18px;
+  border: 1px solid #ccc;
+  background: #f3f3f3;
+  cursor: pointer;
+}
+
+.size-btn.active {
+  border: 2px solid #000;
+  background: #fff;
+}
+
+/* UNITS + BUTTONS */
+.action-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.unit-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.unit-box input {
+  width: 55px;
+  padding: 6px;
+  border: 1px solid #000;
+}
+
+.add-cart {
+  background: #d9a16c;
+  color: #fff;
+  border: none;
+  padding: 10px 28px;
+  cursor: pointer;
+}
+
+.buy-now {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 28px;
+  cursor: pointer;
+}
+
+/* DIVIDER */
+hr {
+  margin: 20px 0;
+  border: none;
+  border-top: 1px solid #e0e0e0;
+}
+
+/* COMPARE / WISHLIST */
+.wish-row {
+  display: flex;
+  gap: 30px;
+  font-size: 14px;
+  margin-bottom: 14px;
+}
+.wish-row {
+  display: flex;
+  gap: 20px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.wishlist {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: 0.3s;
+}
+
+
+.wishlist i {
+  font-size: 16px;
+}
+
+.wishlist.active {
+  color: red;
+}
+
+
+/* SHARE */
+.share-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.share-row i {
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* META TWO COLUMN */
+.meta-grid {
+  display: grid;
+  grid-template-columns: 120px auto;
+  row-gap: 10px;
+  font-size: 14px;
+}
+
+
+
+/* SECTION TWO BOX */
+.buy-section-two {
+  margin: 0px 0px;
+  border: 1px solid #ddd;
+  margin-bottom : 20px;
+  border-radius: 10px;
+}
+
+/* TAB HEADER */
+.tab-header {
+  display: flex;
+  border-bottom: 1px solid #ddd;
+  justify-content: center;
+  align-items: center;
+}
+
+.tab {
+  padding: 14px 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: center;
+}
+
+.tab:last-child {
+  border-right: none;
+}
+
+.tab.active {
+  border-bottom: 3px solid #000;
+  font-weight: 600;
+}
+
+/* CONTENT BOX */
+.tab-content {
+  padding: 30px;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.tab-content ul {
+  margin-top: 15px;
+  padding-left: 20px;
+}
+
+.tab-content li {
+  margin-bottom: 8px;
+}
+
+/* =========================
+   RELATED PRODUCTS
+========================= */
+
+.related-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+  margin-top: 40px;
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  justify-content: center; /* Center grid items */
+  width: 100%;
+  max-width: 1200px; /* optional max width */
+}
+
+
+
+/* ===== Tablet View ===== */
+/* ===== Tablet View Fix ===== */
+@media screen and (max-width: 1024px) {
+  .buy-top {
+    flex-direction: row;       /* left + right side by side */
+    gap: 30px;
+  }
+
+  .buy-left,
+  .buy-right {
+    width: 50%;                /* both sides half width */
+  }
+
+  .main-img {
+    height: auto;              /* scale with width */
+  }
+
+  .main-img img {
+    width: 100%;
+    height: auto;
+  }
+
+  .thumbs {
+    justify-content: flex-start;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .size-row {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .selected-size {
+    margin-top: 5px;
+    font-size: 14px;
+  }
+
+  .action-row {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .unit-box input {
+    width: 55px;
+  }
+
+  .add-cart,
+  .buy-now {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .meta-grid {
+    grid-template-columns: 120px auto;
+  }
+
+  .related-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+}
+
+/* ===== Mobile View ===== */
+@media screen and (max-width: 600px) {
+  .buy-page {
+    padding: 0 15px;
+  }
+
+  .buy-top {
+    flex-direction: column;       /* stack left + right fully */
+    gap: 20px;
+  }
+
+  .main-img img {
+    width: 100%;                  /* full width */
+    height: auto;
+  }
+
+  .thumbs {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .product-title {
+    font-size: 20px;
+  }
+
+  .price {
+    font-size: 18px;
+  }
+
+  .action-row {
+    flex-direction: column;       /* stack unit + buttons */
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .unit-box {
+    width: 100%;
+  }
+
+  .unit-box input {
+    width: 60px;
+  }
+
+  .add-cart, .buy-now {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+  }
+
+  .tab-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tab {
+    padding: 10px 15px;
+    font-size: 13px;
+    width: 100%;
+  }
+
+  .tab-content {
+    padding: 15px;
+    font-size: 13px;
+  }
+
+  .related-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}
+
+/* Mobile view fix for size row overflow */
+@media screen and (max-width: 600px) {
+  .size-row {
+    flex-wrap: wrap;          /* buttons can wrap if needed */
+    gap: 8px;
+    align-items: center;
+  }
+
+  .selected-size {
+    font-size: 13px;          /* smaller text */
+    margin-left: 5px;         /* just a small gap below buttons */
+    white-space: nowrap;      /* keep in one line */
+    overflow: hidden;
+    text-overflow: ellipsis;  /* truncate if too long */
+  }
+}

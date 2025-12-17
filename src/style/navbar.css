@@ -1,0 +1,292 @@
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.navbar {
+  width: 100%;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e5e5;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Main row */
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 40px;
+}
+
+/* Logo */
+.nav-logo {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-top : 5px;
+  
+}
+.nav-logo a{
+    text-decoration: none;
+  color: inherit;
+}
+
+/* Icons */
+.icon {
+  margin-right: 14px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.hamburger {
+  font-size: 22px;
+  cursor: pointer;
+  display: none;
+}
+
+/* Menu */
+.nav-menu {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 10px 0;
+  gap: 24px;
+  transition: all 0.3s ease;
+}
+
+.nav-menu li {
+  font-size: 14px;
+  cursor: pointer;
+  color: #333;
+}
+
+.nav-menu li a{
+    text-decoration: none;
+  color: inherit;
+}
+/* Hover */
+.nav-menu li:hover {
+  color: #b38b2e;
+}
+
+
+
+/* Mobile view */
+@media (max-width: 768px) {
+  .hamburger {
+    display: inline-block;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    padding: 0;
+    
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+
+    transition:
+      max-height 0.4s ease,
+      opacity 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  .nav-menu.active {
+    max-height: 500px;   /* enough height */
+    padding: 15px 0;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+.nav-left {
+  position: relative; /* for absolute search dropdown */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Dropdown search input */
+.search-dropdown {
+  position: absolute;
+  left: 100%; /* icon right pakkathula appear */
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+}
+
+.search-dropdown input {
+  width: 180px;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  outline: none;
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+  .search-dropdown input {
+    width: 120px;
+  }
+}
+
+.breadcrumb-wrapper {
+  text-align: center;
+  padding: 8px 0;
+  font-size: 14px;
+}
+
+.breadcrumb a {
+  color: #555;
+  text-decoration: none;
+}
+
+.breadcrumb span {
+  color: #999;
+}
+
+.user-wrapper {
+  position: relative;
+}
+
+.user-dropdown {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  width: 220;
+  background: #fff;
+  border-radius: 10px;
+  padding: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  z-index: 999;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+
+.user-name {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.user-email {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.user-dropdown button {
+  width: 100%;
+  padding: 8px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+  .nav-container {
+    padding: 10px 20px;   /* side padding reduce */
+  }
+
+  .nav-logo {
+    font-size: 18px;
+  }
+
+  .nav-menu {
+    gap: 18px;
+  }
+
+  .icon {
+    font-size: 17px;
+    margin-right: 10px;
+  }
+
+  .search-dropdown input {
+    width: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-container {
+    padding: 10px 15px;
+  }
+
+  .nav-logo {
+    font-size: 17px;
+  }
+
+  .nav-menu {
+    width: 100%;
+    border-top: 1px solid #eee;
+  }
+
+  .nav-menu li {
+    font-size: 15px;
+    padding: 8px 0;
+  }
+
+  .nav-right {
+    gap: 10px;
+  }
+
+  .icon {
+    font-size: 18px;
+    margin-right: 8px;
+  }
+
+  /* Search dropdown mobile la neat-aa irukka */
+  .search-dropdown {
+    left: auto;
+    right: 0;
+    top: 45px;
+    transform: none;
+  }
+
+  .search-dropdown input {
+    width: 160px;
+  }
+
+  /* User dropdown full width illa, neat center */
+  .user-dropdown {
+    right: 10px;
+    width: 220px;
+  }
+
+  .breadcrumb-wrapper {
+    font-size: 12px;
+    padding: 6px 0;
+  }
+}
+
+/* ===== Mobile & Tablet Search Fix ===== */
+@media (max-width: 1024px) {
+
+  .search-dropdown {
+    position: fixed;
+    top: 60px;              /* navbar keezha */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    z-index: 2000;
+  }
+
+  .search-dropdown input {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 25px;
+    font-size: 14px;
+  }
+}
+

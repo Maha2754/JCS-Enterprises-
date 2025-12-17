@@ -1,0 +1,97 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.tiffin-page {
+  width: 100%;
+}
+
+/* Banner */
+.banner {
+  position: relative;
+  width: 100%;
+  height: 315px;
+  overflow: hidden;
+}
+
+.banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,0.35);
+  color: #fff;
+}
+
+.banner-content h1 {
+  font-size: 42px;
+  margin-bottom: 8px;
+}
+
+/* Pagination */
+.pagination {
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.pagination span {
+  width: 36px;
+  height: 36px;
+  background: #f2e1c1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.pagination .active {
+  background: #c9a24d;
+  color: #fff;
+}
+
+@media (max-width: 1024px) {
+  .banner {
+    height: 260px;
+  }
+
+  .banner-content h1 {
+    font-size: 34px;
+  }
+
+  .pagination {
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .banner {
+    height: 200px;
+  }
+
+  .banner-content h1 {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .pagination {
+    margin-top: 30px;
+    gap: 10px;
+  }
+
+  .pagination span {
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
+  }
+}

@@ -1,0 +1,88 @@
+.payment-page {
+  max-width: 450px;
+  margin: 60px auto;
+  padding: 30px;
+  border: 1px solid #ddd;
+  background: #fff;
+}
+
+.payment-page h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.payment-page label {
+  display: block;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.payment-page input[type="radio"] {
+  margin-right: 10px;
+}
+
+.payment-page button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.payment-page button:hover {
+  background: #333;
+}
+
+/* ===== Tablet view ===== */
+@media (max-width: 1024px) {
+  .payment-page {
+    max-width: 80%;
+    margin: 50px auto;
+    padding: 25px;
+  }
+
+  .payment-page h2 {
+    font-size: 22px;
+  }
+
+  .payment-page label {
+    padding: 12px;
+    font-size: 15px;
+  }
+
+  .payment-page button {
+    padding: 12px;
+    font-size: 15px;
+  }
+}
+
+/* ===== Mobile view ===== */
+@media (max-width: 600px) {
+  .payment-page {
+    max-width: 95%;
+    margin: 30px auto;
+    padding: 20px;
+  }
+
+  .payment-page h2 {
+    font-size: 20px;
+  }
+
+  .payment-page label {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .payment-page input[type="radio"] {
+    transform: scale(1.1);
+  }
+
+  .payment-page button {
+    padding: 12px;
+    font-size: 14px;
+  }
+}

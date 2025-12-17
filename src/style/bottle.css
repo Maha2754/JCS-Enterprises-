@@ -1,0 +1,183 @@
+html {
+  scroll-behavior: smooth;
+}
+
+
+/* Container for the bottle page */
+.bottle-page {
+  width: 100%;
+}
+
+/* Banner section */
+.bottle-page .banner {
+  width: 100%;
+  height: 315px;       /* fixed height */
+  overflow: hidden;
+}
+
+.bottle-page .banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Content section after banner */
+.bottle-content {
+  padding: 40px;
+  text-align: center;
+}
+
+.bottle-content h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.bottle-content p {
+  font-size: 16px;
+  color: #555;
+}
+.bottle-page {
+  width: 100%;
+}
+
+/* Banner */
+.banner {
+  position: relative;
+  width: 100%;
+  height: 315px;
+  overflow: hidden;
+}
+
+.banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Overlay text */
+.banner-content {
+  position: absolute;
+  inset: 0;                     /* top:0 right:0 bottom:0 left:0 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(0, 0, 0, 0.35); /* optional dark overlay */
+  color: #fff;
+}
+
+.banner-content h1 {
+  font-size: 42px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.banner-content p {
+  font-size: 14px;
+}
+
+.banner-content a {
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.9;
+}
+
+.banner-content span {
+  opacity: 0.8;
+}
+
+
+
+/* PAGINATION */
+.pagination {
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.pagination span {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f2e1c1;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.pagination .active {
+  background: #c9a24d;
+  color: #fff;
+}
+
+/* ===== Tablet view ===== */
+@media screen and (max-width: 1024px) {
+  .banner {
+    height: 250px; /* smaller banner */
+  }
+
+  .banner-content h1 {
+    font-size: 36px;
+  }
+
+  .banner-content p {
+    font-size: 13px;
+  }
+
+  .bottle-content h2 {
+    font-size: 24px;
+  }
+
+  .bottle-content p {
+    font-size: 15px;
+  }
+
+  .pagination span {
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
+  }
+}
+
+/* ===== Mobile view ===== */
+@media screen and (max-width: 600px) {
+  .banner {
+    height: 180px; /* much smaller banner for mobile */
+  }
+
+  .banner-content h1 {
+    font-size: 28px;
+  }
+
+  .banner-content p {
+    font-size: 12px;
+  }
+
+  .bottle-content {
+    padding: 20px;
+  }
+
+  .bottle-content h2 {
+    font-size: 20px;
+  }
+
+  .bottle-content p {
+    font-size: 14px;
+  }
+
+  .pagination {
+    gap: 8px;
+  }
+
+  .pagination span {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+}
+

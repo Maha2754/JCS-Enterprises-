@@ -1,0 +1,133 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.login-page {
+  min-height: auto;       
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  align-items: center;  
+  background: #fff;
+  padding: 20px 0;
+}
+
+/* Header */
+.login-header {
+  text-align: center;
+  padding: 20px 0 10px 0;
+}
+
+.login-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #000;
+}
+
+/* Login Form Container */
+.login-form-container {
+  width: 40%;
+  text-align: center;
+}
+
+.login-form-container h2 {
+  color: #c9a24d;
+  margin-bottom: 20px;
+}
+
+.login-form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.login-form-container input {
+  padding: 10px 0;
+  border: none;
+  border-bottom: 2px solid #ccc; /* only bottom border */
+  outline: none;
+}
+
+.login-form-container input:focus {
+  border-bottom: 2px solid #d9995f; /* highlight on focus */
+}
+
+.login-form-container button {
+  padding: 10px;
+  background: #d9995f;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.login-form-container button:hover {
+  background: #c78c4e;
+}
+
+/* Links under form */
+.login-links {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  font-size: 12px;
+}
+
+.login-links a {
+  color: #555;
+  text-decoration: none;
+}
+
+.login-links a:hover {
+  color: #d9995f;
+}
+
+/* Footer alignment */
+footer {
+  width: 100%;
+}
+
+
+/* ===== Tablet View ===== */
+@media screen and (max-width: 1024px) {
+  .login-form-container {
+    width: 60%;       /* increase width for smaller screens */
+    padding: 0 20px;  /* optional padding */
+  }
+
+  .login-header h1 {
+    font-size: 28px;  /* slightly smaller header */
+  }
+}
+
+/* ===== Mobile View ===== */
+@media screen and (max-width: 600px) {
+  .login-form-container {
+    width: 90%;       /* almost full width on mobile */
+    padding: 0 10px;
+  }
+
+  .login-header h1 {
+    font-size: 24px;  /* smaller header */
+  }
+
+  .login-form-container h2 {
+    font-size: 20px;  /* smaller sub-header */
+  }
+
+  .login-form-container input,
+  .login-form-container button {
+    font-size: 14px;  /* make input & button readable */
+  }
+
+  .login-links {
+    font-size: 11px;
+    gap: 8px;
+  }
+}

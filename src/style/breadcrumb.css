@@ -1,0 +1,33 @@
+.breadcrumb {
+  padding: 10px 20px;
+  font-size: 14px;
+  background: #ffffff;
+}
+
+.breadcrumb a {
+  color: #333;
+}
+
+.breadcrumb a:hover {
+  color :#b38b2e;
+}
+/* ===== Tablet view ===== */
+@media screen and (max-width: 1024px) {
+  .breadcrumb {
+    padding: 8px 16px;  /* slightly smaller padding */
+    font-size: 13px;    /* slightly smaller text */
+  }
+}
+
+/* ===== Mobile view ===== */
+@media screen and (max-width: 600px) {
+  .breadcrumb {
+    padding: 6px 12px;  /* mobile padding */
+    font-size: 12px;    /* mobile font size */
+  }
+
+  .breadcrumb a {
+    word-break: break-word; /* prevent overflow on small screens */
+  }
+}
+

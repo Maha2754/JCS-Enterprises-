@@ -1,0 +1,227 @@
+/* ---------- FILTER BAR ---------- */
+.filter-bar {
+  width: 100%;
+  height: 100px;
+  background: rgba(255, 243, 227, 1);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 60px;
+  position : relative;
+}
+
+/* Left side */
+.filter-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+
+.filter-left i {
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* Right side */
+.filter-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Sort input box */
+.sort-box {
+  position: relative;
+}
+
+.sort-box input {
+  width: 160px;
+  height: 40px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 0 30px 0 10px;
+  background: transparent;
+  outline: none;
+  font-size: 14px;
+}
+
+/* Plus icon */
+.sort-box .plus {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  cursor: pointer;
+  color: #555;
+}
+
+/* filter toggle menu */
+.filter-toggle {
+  position: absolute;
+  top: 70%;
+  left: 50px;
+  width: 200px;
+  height : inherit;
+  background: rgba(255, 243, 227, 1);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  z-index: 9999;
+  padding : 10px;
+  cursor: pointer;
+}
+
+.filter-toggle div {
+  padding: 12px;
+  cursor: pointer;
+  border-bottom: 1px solid #e0d5c3;
+}
+
+.filter-toggle input {
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-bottom: 1px solid #aaa;
+  background: transparent;
+  outline: none;
+  cursor : pointer;
+}
+
+/* sort dropdown */
+.sort-toggle {
+  position: absolute;
+  top: 70%;
+  right: 60px;
+  width: 200px;
+  background: rgba(255, 243, 227, 1);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  z-index: 9999;
+}
+
+.sort-toggle div {
+  padding: 12px;
+  cursor: pointer;
+  border-bottom: 1px solid #e0d5c3;
+}
+
+.filter-toggle,
+.sort-toggle {
+  animation: fadeSlide 0.25s ease;
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+/* ===== Mobile + Tablet View Only ===== */
+@media screen and (max-width: 1024px) {
+  /* Filter bar height & layout */
+  .filter-bar {
+    height: 60px;
+    padding: 0 15px;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  /* Left side: show only filter icon */
+  .filter-left {
+    font-size: 0;           /* hide text */
+  }
+
+  .filter-left i {
+    font-size: 18px;        /* show icon only */
+    color: #333;
+  }
+
+  /* Right side: hide text, show only plus icon */
+  .filter-right {
+    font-size: 0;           /* hide text */
+  }
+
+  .sort-box input {
+    display: none;          /* hide input box */
+  }
+
+  .sort-box .plus {
+    font-size: 18px;        /* show plus icon */
+    color: #333;
+  }
+
+  /* Adjust toggle positions if needed */
+  .filter-toggle {
+    top: 60px;
+    left: 0;
+    width: 100%;
+  }
+
+  .sort-toggle {
+    top: 60px;
+    right: 0;
+    width: 100%;
+  }
+}
+
+/* ===== Mobile View Only ===== */
+@media screen and (max-width: 768px) {
+  /* Filter bar height & layout */
+  .filter-bar {
+    height: 60px;
+    padding: 0 15px;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  /* Left side: show only filter icon */
+  .filter-left {
+    font-size: 0;           /* hide text */
+  }
+
+  .filter-left i {
+    font-size: 18px;        /* show icon only */
+    color: #333;
+  }
+
+  /* Right side: hide text, show only plus icon */
+  .filter-right {
+    font-size: 0;           /* hide text */
+  }
+
+  .sort-box input {
+    display: none;          /* hide input box */
+  }
+
+  .sort-box .plus {
+    font-size: 18px;        /* show plus icon */
+    color: #333;
+  }
+
+  /* Adjust toggle positions if needed */
+  .filter-toggle {
+    top: 60px;
+    left: 0;
+    width: 100%;
+  }
+
+  .sort-toggle {
+    top: 60px;
+    right: 0;
+    width: 100%;
+  }
+}

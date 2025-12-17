@@ -1,0 +1,141 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Page */
+.register-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #fff;
+  padding-bottom: 60px;
+}
+
+/* Header */
+.register-header {
+  text-align: center;
+  padding: 40px 0 0 0;
+}
+
+.register-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #000;
+}
+
+/* Form Container */
+.register-form-container {
+  width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  width : 45%;
+ margin-bottom : 50px;
+
+}
+
+.register-form-container h2 {
+  color: #c9a24d;
+  margin-bottom: 30px;
+  font-size: 24px;
+}
+
+.register-form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width : 100%;
+}
+
+/* Input Fields */
+.register-form-container input {
+  width: 100%;
+  padding: 10px 5px;
+  border: none;
+  border-bottom: 1px solid #aaa;
+  outline: none;
+  font-size: 14px;
+}
+
+/* Button */
+.register-form-container button {
+  padding: 12px 0;
+  margin-top: 10px;
+  width: 100%;
+  background: #fbe9d0;
+  color: #000;
+  font-weight: bold;
+  border: 1px solid #fbe9d0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.register-form-container button:hover {
+  background: #d9995f;
+  color: #fff;
+  border: 1px solid #d9995f;
+}
+
+/* Login link */
+.register-login {
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+.register-login a {
+  color: #555;
+  text-decoration: none;
+ font-weight: bold;
+
+}
+
+.register-login a:hover {
+ color :#d9995f;
+}
+
+/* ===== Tablet View ===== */
+@media screen and (max-width: 1024px) {
+  .register-form-container {
+    width: 60%;       /* wider on smaller screens */
+    padding: 0 20px;  /* optional padding */
+  }
+
+  .register-header h1 {
+    font-size: 28px;  /* slightly smaller header */
+  }
+
+  .register-form-container h2 {
+    font-size: 22px;
+  }
+}
+
+/* ===== Mobile View ===== */
+@media screen and (max-width: 600px) {
+  .register-form-container {
+    width: 90%;       /* almost full width on mobile */
+    padding: 0 10px;
+    margin-bottom: 30px;
+  }
+
+  .register-header h1 {
+    font-size: 24px;  /* smaller header */
+  }
+
+  .register-form-container h2 {
+    font-size: 20px;  /* smaller sub-header */
+  }
+
+  .register-form-container input,
+  .register-form-container button {
+    font-size: 14px;  /* readable input & button text */
+  }
+
+  .register-login {
+    font-size: 11px;
+  }
+}
+

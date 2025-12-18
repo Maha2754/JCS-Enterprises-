@@ -14,7 +14,8 @@ import mug2 from "../assets/mug.png";
 import cas1 from "../assets/casserole.png";
 import cas2 from "../assets/casserole.png";
 
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
+
 import { CartContext } from "../component/CartContext";
 import ProductCard from "../component/ProductCard";
 
@@ -29,10 +30,19 @@ const allProducts = [
 const Buy = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
+
   const { addToCart } = useContext(CartContext);
 
   // FIND PRODUCT BY ID
-  const product = allProducts.find((p) => p.id === parseInt(id));
+  // const product = allProducts.find((p) => p.id === parseInt(id));
+const product =
+  location.state ||
+  allProducts.find((p) => p.id === parseInt(id));
+
+  const productType = product?.type || "bottle";
+
+
 
   // redirect if product not found
   useEffect(() => {
@@ -40,16 +50,23 @@ const Buy = () => {
   }, [product, navigate]);
 
   if (!product) return null;
-
-  // thumbs
-  const thumbsByType = {
+  //thumbs
+    const thumbsByType = {
     pan: [pan1, pan2,pan1,pan2],
     bottle: [bottle1, bottle2,bottle1,bottle2],
     mug: [mug1, mug2,mug1,mug2],
     casserole: [cas1, cas2,cas1,cas2],
   };
 
-  const [activeImg, setActiveImg] = useState(product.img);
+const thumbs =
+  location.state?.img
+    ? [location.state.img]
+    : thumbsByType[productType] || [product.img];
+
+ 
+const [activeImg, setActiveImg] = useState(product.img);
+
+
   const [activeTab, setActiveTab] = useState("description");
   const sizesByType = {
     pan: ["Small", "Medium", "Large"],
@@ -57,7 +74,15 @@ const Buy = () => {
     mug: ["150ml", "200ml", "300ml"],
     casserole: ["2L", "3L", "5L"],
   };
-  const [activeSize, setActiveSize] = useState(sizesByType[product.type][0]);
+ const [activeSize, setActiveSize] = useState(
+  sizesByType[productType]?.[0] || ""
+);
+
+useEffect(() => {
+  setActiveImg(location.state?.img || product.img);
+}, [id, product.img, location.state]);
+
+
   const [quantity, setQuantity] = useState(1);
   const [isWishlisted, setIsWishlisted] = useState(false);
 
@@ -86,17 +111,18 @@ addToCart({
           <div className="main-img">
             <img src={activeImg} alt="product" />
           </div>
-          <div className="thumbs">
-            {(thumbsByType[product.type] || [product.img]).map((img, i) => (
-              <img
-                key={i}
-                src={img}
-                alt=""
-                onClick={() => setActiveImg(img)}
-                className={activeImg === img ? "active-thumb" : ""}
-              />
-            ))}
-          </div>
+        <div className="thumbs">
+  {thumbs.map((img, i) => (
+    <img
+      key={i}
+      src={img}
+      onClick={() => setActiveImg(img)}
+      className={activeImg === img ? "active-thumb" : ""}
+    />
+  ))}
+</div>
+
+
         </div>
 
         {/* RIGHT SIDE */}

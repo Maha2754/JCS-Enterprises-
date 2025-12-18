@@ -7,6 +7,7 @@ import bottle from "../assets/bottle.png";
 import casserole from "../assets/casserole.png";
 import mug from "../assets/mug.png";
 import { useNavigate } from "react-router-dom";
+import ProductCard from "../component/ProductCard";
 
 const Cart = () => {
   const navigate = useNavigate();
@@ -88,44 +89,21 @@ const Cart = () => {
       <section className="products-section freq-section">
         <h2>Frequently Bought Together</h2>
         <div className="products-grid">
-          {frequentProducts.map((item, i) => (
-            <div className="product-card" key={i}>
-              <div className="product-img-box">
-                <img src={item.img} alt={item.title} />
-              </div>
-              <div className="product-details">
-                <h4>{item.title}</h4>
-                <p className="best">{item.para}</p>
-                <div className="rating">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <span key={star} className={`star ${star <= item.rating ? "filled" : ""}`}>★</span>
-                  ))}
-                  <span className="reviews">({item.reviews} reviews)</span>
-                </div>
+  {frequentProducts.map((item) => (
+    <ProductCard
+      key={item.id}
+      id={item.id}
+      img={item.img}
+      title={item.title}
+      price={`₹${item.price}`}
+      oldPrice={`₹${item.oldPrice}`}
+      para={item.para}
+      rating={item.rating}
+      reviews={item.reviews}
+    />
+  ))}
+</div>
 
-                <div className="price">
-                  <span className="new">{formatPrice(item.price)}</span>
-                  <span className="old">{formatPrice(item.oldPrice)}</span>
-                </div>
-
-                <button
-                  className="add-btn"
-                  onClick={() =>
-                    addToCart({
-                      id: item.id,
-                      img: item.img,
-                      title: item.title,
-                      price: Number(item.price),
-                      quantity: 1,
-                    })
-                  }
-                >
-                  Add
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
       </section>
     </div>
 

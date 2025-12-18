@@ -1,36 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../style/login.css";
 import Footer from "../../component/Footer";
 
 const Login = () => {
+
+  
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = (e) => {
-    e.preventDefault();
+useEffect(() => {
+  localStorage.setItem(
+    "user",
+    JSON.stringify({
+      email: "admin@gmail.com",
+      password: "123456",
+    })
+  );
+}, []);
 
-    const storedUser = JSON.parse(localStorage.getItem("user"));
 
-    if (!storedUser) {
-      // No user registered yet
-      alert("No user found. Please register first.");
-      navigate("/register"); // redirect to register page
-      return;
-    }
+ const handleLogin = (e) => {
+  e.preventDefault();
 
-    if (
-      storedUser.email === email &&
-      storedUser.password === password
-    ) {
-      alert("Login Successful!");
-      localStorage.setItem("isLoggedIn", "true");
-      navigate("/"); // Redirect to Home
-    } else {
-      alert("Invalid Credentials. Please try again or Register first.");
-    }
-  };
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+
+  if (!storedUser) {
+    alert("No user found. Please register first.");
+    navigate("/register");
+    return;
+  }
+
+  if (
+    storedUser.email === email.trim() &&
+    storedUser.password === password.trim()
+  ) {
+    alert("Login Successful!");
+    localStorage.setItem("isLoggedIn", "true");
+    navigate("/");
+  } else {
+    alert("Invalid Credentials. Please try again or Register first.");
+  }
+};
 
   return (
     <div className="login-page">

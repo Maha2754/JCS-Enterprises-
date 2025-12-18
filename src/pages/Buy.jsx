@@ -89,20 +89,16 @@ useEffect(() => {
   const toggleWishlist = () => setIsWishlisted(!isWishlisted);
 
 const handleBuyNow = () => {
-  addToCart({
-    id: product.id,
-    img: product.img,
-    title: product.title,
-    price: Number(
-      String(product.price).replace(/[^0-9.]/g, "")
-    ), // ✅ REAL FIX
-    size: size,
-    quantity: Number(quantity) || 1,
-  });
+addToCart({
+  id: product.id,
+  img: product.img,
+  title: product.title,
+    price: Number(String(product.price).replace(/[^0-9.]/g, "")),// NUMBER-a store panrom
+  size: activeSize,
+  quantity: Number(quantity) || 1,
+})
   navigate("/cart");
 };
-
-
 
 
   return (
@@ -166,16 +162,14 @@ const handleBuyNow = () => {
 <button
     className="add-cart"
     onClick={() =>
-  addToCart({
-    id: product.id,
-    img: product.img,
-    title: product.title,
-    price: Number(
-      String(product.price).replace(/[^0-9.]/g, "")
-    ), // ✅ REAL FIX
-    size: size,
-    quantity: Number(quantity) || 1,
-  })
+      addToCart({
+  id: product.id,
+  img: product.img,
+  title: product.title,
+    price: Number(String(product.price).replace(/[^0-9.]/g, "")),// NUMBER-a store panrom
+  size: activeSize,
+  quantity: Number(quantity) || 1,
+})
     }
   >
     ADD TO CART

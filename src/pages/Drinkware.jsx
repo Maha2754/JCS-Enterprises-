@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../style/drinkware.css";
-import bannerImage from "../assets/banner.png";
+import bannerImage from "../assets/banners/banner.png";
 import { Link } from "react-router-dom";
 import ProductCard from "../component/ProductCard";
 import FilterBar from "../component/FilterBar";
@@ -8,26 +8,26 @@ import Drink from "../assets/drink.png";
 
 
 const allProducts = [
-  { id: 1, img: Drink, title: "DrinkWare 500ml", price: "₹1000", oldPrice: "₹1200", para: "Best Selling Product" },
-  { id: 2, img: Drink, title: "DrinkWare 750ml", price: "₹1200", oldPrice: "₹1500", para: "Best Selling Product" },
-  { id: 3, img: Drink, title: "DrinkWare 1000ml", price: "₹1400", oldPrice: "₹1700", para: "Best Selling Product" },
-  { id: 4, img: Drink, title: "DrinkWare 500ml", price: "₹1000", oldPrice: "₹1200", para: "Best Selling Product" },
-  { id: 5, img: Drink, title: "DrinkWare 750ml", price: "₹1200", oldPrice: "₹1500", para: "Best Selling Product" },
-  { id: 6, img: Drink, title: "DrinkWare 1000ml", price: "₹1400", oldPrice: "₹1700", para: "Best Selling Product" },
-  { id: 7, img: Drink, title: "DrinkWare 500ml", price: "₹1000", oldPrice: "₹1200", para: "Best Selling Product" },
-  { id: 8, img: Drink, title: "DrinkWare 750ml", price: "₹1200", oldPrice: "₹1500", para: "Best Selling Product" },
-  { id: 9, img: Drink, title: "DrinkWare 1000ml", price: "₹1400", oldPrice: "₹1700", para: "Best Selling Product" },
-  { id: 10, img: Drink, title: "DrinkWare 500ml", price: "₹1000", oldPrice: "₹1200", para: "Best Selling Product" },
-  { id: 11, img: Drink, title: "DrinkWare 750ml", price: "₹1200", oldPrice: "₹1500", para: "Best Selling Product" },
-  { id: 12, img: Drink, title: "DrinkWare 1000ml", price: "₹1400", oldPrice: "₹1700", para: "Best Selling Product" },
-  { id: 13, img: Drink, title: "DrinkWare 500ml", price: "₹1000", oldPrice: "₹1200", para: "Best Selling Product" },
-  { id: 14, img: Drink, title: "DrinkWare 750ml", price: "₹1200", oldPrice: "₹1500", para: "Best Selling Product" },
-  { id: 15, img: Drink, title: "DrinkWare 1000ml", price: "₹1400", oldPrice: "₹1700", para: "Best Selling Product" },
-  { id: 16, img: Drink, title: "DrinkWare 500ml", price: "₹1000", oldPrice: "₹1200", para: "Best Selling Product" },
-  { id: 17, img: Drink, title: "DrinkWare 750ml", price: "₹1200", oldPrice: "₹1500", para: "Best Selling Product" },
-  { id: 18, img: Drink, title: "DrinkWare 1000ml", price: "₹1400", oldPrice: "₹1700", para: "Best Selling Product" },
-  { id: 19, img: Drink, title: "DrinkWare 500ml", price: "₹1000", oldPrice: "₹1200", para: "Best Selling Product" },
-  { id: 20, img: Drink, title: "DrinkWare 750ml", price: "₹1200", oldPrice: "₹1500", para: "Best Selling Product" },
+  { id: 1, img: Drink, title: "DrinkWare 500ml", price: "1000", oldPrice: "1200", para: "Best Selling Product" },
+  { id: 2, img: Drink, title: "DrinkWare 750ml", price: "1200", oldPrice: "1500", para: "Best Selling Product" },
+  { id: 3, img: Drink, title: "DrinkWare 1000ml", price: "1400", oldPrice: "1700", para: "Best Selling Product" },
+  { id: 4, img: Drink, title: "DrinkWare 500ml", price: "1000", oldPrice: "1200", para: "Best Selling Product" },
+  { id: 5, img: Drink, title: "DrinkWare 750ml", price: "1200", oldPrice: "1500", para: "Best Selling Product" },
+  { id: 6, img: Drink, title: "DrinkWare 1000ml", price: "1400", oldPrice: "1700", para: "Best Selling Product" },
+  { id: 7, img: Drink, title: "DrinkWare 500ml", price: "1000", oldPrice: "1200", para: "Best Selling Product" },
+  { id: 8, img: Drink, title: "DrinkWare 750ml", price: "1200", oldPrice: "1500", para: "Best Selling Product" },
+  { id: 9, img: Drink, title: "DrinkWare 1000ml", price: "1400", oldPrice: "1700", para: "Best Selling Product" },
+  { id: 10, img: Drink, title: "DrinkWare 500ml", price: "1000", oldPrice: "1200", para: "Best Selling Product" },
+  { id: 11, img: Drink, title: "DrinkWare 750ml", price: "1200", oldPrice: "1500", para: "Best Selling Product" },
+  { id: 12, img: Drink, title: "DrinkWare 1000ml", price: "1400", oldPrice: "1700", para: "Best Selling Product" },
+  { id: 13, img: Drink, title: "DrinkWare 500ml", price: "1000", oldPrice: "1200", para: "Best Selling Product" },
+  { id: 14, img: Drink, title: "DrinkWare 750ml", price: "1200", oldPrice: "1500", para: "Best Selling Product" },
+  { id: 15, img: Drink, title: "DrinkWare 1000ml", price: "1400", oldPrice: "1700", para: "Best Selling Product" },
+  { id: 16, img: Drink, title: "DrinkWare 500ml", price: "1000", oldPrice: "1200", para: "Best Selling Product" },
+  { id: 17, img: Drink, title: "DrinkWare 750ml", price: "1200", oldPrice: "1500", para: "Best Selling Product" },
+  { id: 18, img: Drink, title: "DrinkWare 1000ml", price: "1400", oldPrice: "1700", para: "Best Selling Product" },
+  { id: 19, img: Drink, title: "DrinkWare 500ml", price: "1000", oldPrice: "1200", para: "Best Selling Product" },
+  { id: 20, img: Drink, title: "DrinkWare 750ml", price: "1200", oldPrice: "1500", para: "Best Selling Product" },
 ];
 
 /* 🔹 pagination settings */
@@ -58,12 +58,12 @@ export default function Drinkware() {
     // 🔹 SORT
     if (sortType === "low-high") {
       products.sort(
-        (a, b) => Number(a.price.replace("₹", "")) - Number(b.price.replace("₹", ""))
+        (a, b) => Number(a.price.replace("", "")) - Number(b.price.replace("", ""))
       );
     }
     if (sortType === "high-low") {
       products.sort(
-        (a, b) => Number(b.price.replace("₹", "")) - Number(a.price.replace("₹", ""))
+        (a, b) => Number(b.price.replace("", "")) - Number(a.price.replace("", ""))
       );
     }
 

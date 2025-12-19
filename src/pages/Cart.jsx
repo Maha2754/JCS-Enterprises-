@@ -33,7 +33,7 @@ const Cart = () => {
   0
 );
 
-  const formatPrice = (num) => `₹${num.toLocaleString()}`; // format price for display
+  const formatPrice = (num) => `${num.toLocaleString()}`; // format price for display
 
     console.log(cartItems);
 
@@ -86,7 +86,7 @@ const Cart = () => {
       )}
 
       {/* ================= FREQUENTLY BOUGHT TOGETHER ================= */}
-      <section className="products-section freq-section">
+      <section className="products-section">
         <h2>Frequently Bought Together</h2>
         <div className="products-grid">
   {frequentProducts.map((item) => (
@@ -95,8 +95,8 @@ const Cart = () => {
       id={item.id}
       img={item.img}
       title={item.title}
-      price={`₹${item.price}`}
-      oldPrice={`₹${item.oldPrice}`}
+      price={`${item.price}`}
+      oldPrice={`${item.oldPrice}`}
       para={item.para}
       rating={item.rating}
       reviews={item.reviews}

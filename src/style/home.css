@@ -8,17 +8,19 @@
   padding: 0px 40px;
 }
 
-/* Banner */
-.home-banner {
-  width: 100vw;
-  height: auto;   /* automatic height to fit image */
+/* banner */
+
+.hero-section {
+  width: 100%;
+  height: calc(100vh - 80px); /* 🔥 navbar height */
   overflow: hidden;
 }
 
-.home-banner img {
+.hero-section img {
   width: 100%;
-  height: auto;
-  object-fit: cover;
+  height: 100%;
+  object-fit: cover; /* 🔥 full cover */
+  display: block;
 }
 
 /* ---------------- COLLECTIONS ---------------- */
@@ -90,6 +92,7 @@
 .products-section {
   padding: 80px 0;
   text-align: center;
+  width : 100%;
 }
 
 .products-section h2 {

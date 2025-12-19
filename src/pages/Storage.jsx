@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../style/storage.css";
-import bannerImage from "../assets/banner.png";
+import bannerImage from "../assets/banners/banner.png";
 import { Link } from "react-router-dom";
 import ProductCard from "../component/ProductCard";
 import FilterBar from "../component/FilterBar";
@@ -10,26 +10,26 @@ import store from "../assets/storage.png";
 
 
 const allProducts = [
-  { id: 1, img: store, title: "Steel Bottle 500ml", price: "₹1000", oldPrice: "₹1200", para: "Best Selling Product" },
-  { id: 2, img: store, title: "Steel Bottle 750ml", price: "₹1200", oldPrice: "₹1500", para: "Best Selling Product" },
-  { id: 3, img: store, title: "Steel Bottle 1000ml", price: "₹1400", oldPrice: "₹1700", para: "Best Selling Product" },
-  { id: 4, img: store, title: "Steel Bottle 500ml", price: "₹1000", oldPrice: "₹1200", para: "Best Selling Product" },
-  { id: 5, img: store, title: "Steel Bottle 750ml", price: "₹1200", oldPrice: "₹1500", para: "Best Selling Product" },
-  { id: 6, img: store, title: "Steel Bottle 1000ml", price: "₹1400", oldPrice: "₹1700", para: "Best Selling Product" },
-  { id: 7, img: store, title: "Steel Bottle 500ml", price: "₹1000", oldPrice: "₹1200", para: "Best Selling Product" },
-  { id: 8, img: store, title: "Steel Bottle 750ml", price: "₹1200", oldPrice: "₹1500", para: "Best Selling Product" },
-  { id: 9, img: store, title: "Steel Bottle 1000ml", price: "₹1400", oldPrice: "₹1700", para: "Best Selling Product" },
-  { id: 10, img: store, title: "Steel Bottle 500ml", price: "₹1000", oldPrice: "₹1200", para: "Best Selling Product" },
-  { id: 11, img: store, title: "Steel Bottle 750ml", price: "₹1200", oldPrice: "₹1500", para: "Best Selling Product" },
-  { id: 12, img: store, title: "Steel Bottle 1000ml", price: "₹1400", oldPrice: "₹1700", para: "Best Selling Product" },
-  { id: 13, img: store, title: "Steel Bottle 500ml", price: "₹1000", oldPrice: "₹1200", para: "Best Selling Product" },
-  { id: 14, img: store, title: "Steel Bottle 750ml", price: "₹1200", oldPrice: "₹1500", para: "Best Selling Product" },
-  { id: 15, img: store, title: "Steel Bottle 1000ml", price: "₹1400", oldPrice: "₹1700", para: "Best Selling Product" },
-  { id: 16, img: store, title: "Steel Bottle 500ml", price: "₹1000", oldPrice: "₹1200", para: "Best Selling Product" },
-  { id: 17, img: store, title: "Steel Bottle 750ml", price: "₹1200", oldPrice: "₹1500", para: "Best Selling Product" },
-  { id: 18, img: store, title: "Steel Bottle 1000ml", price: "₹1400", oldPrice: "₹1700", para: "Best Selling Product" },
-  { id: 19, img: store, title: "Steel Bottle 500ml", price: "₹1000", oldPrice: "₹1200", para: "Best Selling Product" },
-  { id: 20, img: store, title: "Steel Bottle 750ml", price: "₹1200", oldPrice: "₹1500", para: "Best Selling Product" },
+  { id: 1, img: store, title: "Steel Bottle 500ml", price: "1000", oldPrice: "1200", para: "Best Selling Product" },
+  { id: 2, img: store, title: "Steel Bottle 750ml", price: "1200", oldPrice: "1500", para: "Best Selling Product" },
+  { id: 3, img: store, title: "Steel Bottle 1000ml", price: "1400", oldPrice: "1700", para: "Best Selling Product" },
+  { id: 4, img: store, title: "Steel Bottle 500ml", price: "1000", oldPrice: "1200", para: "Best Selling Product" },
+  { id: 5, img: store, title: "Steel Bottle 750ml", price: "1200", oldPrice: "1500", para: "Best Selling Product" },
+  { id: 6, img: store, title: "Steel Bottle 1000ml", price: "1400", oldPrice: "1700", para: "Best Selling Product" },
+  { id: 7, img: store, title: "Steel Bottle 500ml", price: "1000", oldPrice: "1200", para: "Best Selling Product" },
+  { id: 8, img: store, title: "Steel Bottle 750ml", price: "1200", oldPrice: "1500", para: "Best Selling Product" },
+  { id: 9, img: store, title: "Steel Bottle 1000ml", price: "1400", oldPrice: "1700", para: "Best Selling Product" },
+  { id: 10, img: store, title: "Steel Bottle 500ml", price: "1000", oldPrice: "1200", para: "Best Selling Product" },
+  { id: 11, img: store, title: "Steel Bottle 750ml", price: "1200", oldPrice: "1500", para: "Best Selling Product" },
+  { id: 12, img: store, title: "Steel Bottle 1000ml", price: "1400", oldPrice: "1700", para: "Best Selling Product" },
+  { id: 13, img: store, title: "Steel Bottle 500ml", price: "1000", oldPrice: "1200", para: "Best Selling Product" },
+  { id: 14, img: store, title: "Steel Bottle 750ml", price: "1200", oldPrice: "1500", para: "Best Selling Product" },
+  { id: 15, img: store, title: "Steel Bottle 1000ml", price: "1400", oldPrice: "1700", para: "Best Selling Product" },
+  { id: 16, img: store, title: "Steel Bottle 500ml", price: "1000", oldPrice: "1200", para: "Best Selling Product" },
+  { id: 17, img: store, title: "Steel Bottle 750ml", price: "1200", oldPrice: "1500", para: "Best Selling Product" },
+  { id: 18, img: store, title: "Steel Bottle 1000ml", price: "1400", oldPrice: "1700", para: "Best Selling Product" },
+  { id: 19, img: store, title: "Steel Bottle 500ml", price: "1000", oldPrice: "1200", para: "Best Selling Product" },
+  { id: 20, img: store, title: "Steel Bottle 750ml", price: "1200", oldPrice: "1500", para: "Best Selling Product" },
 ];
 
 /* 🔹 pagination settings */
@@ -57,12 +57,12 @@ export default function Storage() {
     // 🔹 SORT
     if (sortType === "low-high") {
       products.sort(
-        (a, b) => Number(a.price.replace("₹", "")) - Number(b.price.replace("₹", ""))
+        (a, b) => Number(a.price.replace("", "")) - Number(b.price.replace("", ""))
       );
     }
     if (sortType === "high-low") {
       products.sort(
-        (a, b) => Number(b.price.replace("₹", "")) - Number(a.price.replace("₹", ""))
+        (a, b) => Number(b.price.replace("", "")) - Number(a.price.replace("", ""))
       );
     }
 

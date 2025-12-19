@@ -1,0 +1,97 @@
+/* =========================
+   HERO SECTION
+========================= */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 80px);
+  overflow: hidden;
+}
+
+/* =========================
+   HERO SLIDE BASE
+========================= */
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+/* Active slide */
+.hero-slide.active {
+  opacity: 1;
+  z-index: 1;
+  animation: zoomOut 4s forwards; /* 🔥 ZOOM ALL DEVICES */
+}
+
+/* =========================
+   BLUR BACKGROUND
+========================= */
+.hero-slide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: inherit;
+  background-size: cover;
+  background-position: center;
+  filter: blur(18px);
+  transform: scale(1.2);
+  z-index: 0;
+}
+
+/* =========================
+   FRONT CLEAR IMAGE
+========================= */
+.hero-slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: inherit;
+  background-size: contain;   /* FULL IMAGE */
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 1;
+}
+
+/* =========================
+   OVERLAY
+========================= */
+.hero-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.04);
+  z-index: 2;
+}
+
+/* =========================
+   ZOOM KEYFRAMES
+========================= */
+@keyframes zoomOut {
+  0% {
+    transform: scale(1.08);   /* safe for mobile too */
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* =========================
+   TABLET VIEW
+========================= */
+@media (max-width: 1024px) {
+  .hero-section {
+    height: calc(100vh - 70px);
+  }
+}
+
+/* =========================
+   MOBILE VIEW
+========================= */
+@media (max-width: 768px) {
+  .hero-section {
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+}

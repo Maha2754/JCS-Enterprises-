@@ -1,0 +1,288 @@
+.track-order-container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 30px;
+  background: #f7f7f7;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.track-order-form input {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.track-order-form button {
+  padding: 10px 20px;
+  border: none;
+  background: #ff6600;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.track-order-form button:hover {
+  background: #e55a00;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  max-width: 450px;
+  width: 90%;
+  text-align: left;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+/* Top-right X button */
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #ff6600;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.modal-close:hover {
+  color: #e55a00;
+}
+
+/* Shipment tracker */
+.tracker {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 0;
+  position: relative;
+}
+
+.tracker-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  position: relative;
+}
+
+/* Line between dots using ::after */
+.tracker-step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 10px; /* center of dot */
+  left: 50%;
+  width: 100%;
+  height: 4px;
+  background: #ccc;
+  z-index: 1;
+  transform: translateX(0);
+}
+
+.tracker-step.completed:not(:last-child)::after {
+  background: #ff6600;
+}
+
+.tracker-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ccc;
+  z-index: 2;
+  transition: background 0.3s;
+}
+
+.tracker-dot.completed {
+  background: #ff6600;
+}
+
+.tracker-label {
+  margin-top: 8px;
+  font-size: 12px;
+  text-align: center;
+}
+
+/* Items */
+.order-items {
+  margin-top: 15px;
+}
+
+.order-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  background: #f7f7f7;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.order-item img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-right: 15px;
+}
+
+.item-details p {
+  margin: 3px 0;
+}
+
+.item-name {
+  font-weight: bold;
+}
+
+/* Hide navbar when modal is open */
+.hidden-navbar {
+  display: none !important;
+}
+
+.tracker {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 0;
+  position: relative;
+}
+
+.truck {
+  position: absolute;
+  top: -25px; /* above dots */
+  font-size: 24px;
+  transition: left 0.8s ease-in-out;
+  z-index: 3;
+}
+
+/* ===== MOBILE ===== */
+@media screen and (max-width: 480px) {
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    overflow-y: auto; /* scrollable */
+    padding: 20px 0;
+  }
+
+.modal-content {
+    position: relative; /* IMPORTANT */
+    width: 95%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .modal-close {
+    position: absolute;   /* 🔥 FIX */
+    top: 12px;
+    right: 12px;
+    font-size: 22px;
+    z-index: 20;
+  }
+
+  .order-item {
+    flex-direction: column;
+    align-items: center; /* center items horizontally */
+  }
+
+  .order-item img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+  }
+
+  .tracker-label {
+    font-size: 10px;
+  }
+
+  .truck {
+    font-size: 20px;
+    top: -20px;
+  }
+}
+
+/* ===== TABLET ===== */
+@media screen and (max-width: 768px) {
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    overflow-y: auto;
+    padding: 20px 0;
+  }
+ .modal-content {
+    position: relative; /* IMPORTANT */
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 25px;
+    text-align: center;
+  }
+
+  .modal-close {
+    position: absolute;   /* 🔥 FIX */
+    top: 14px;
+    right: 14px;
+    font-size: 24px;
+    z-index: 20;
+  }
+
+  .order-item {
+    flex-direction: column;
+    align-items: center; /* center items horizontally */
+  }
+
+  .order-item img {
+    width: 55px;
+    height: 55px;
+    margin-bottom: 5px;
+  }
+
+  .tracker-label {
+    font-size: 11px;
+  }
+
+  .truck {
+    font-size: 22px;
+    top: -22px;
+  }
+}

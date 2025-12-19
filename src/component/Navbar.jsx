@@ -82,6 +82,13 @@ const handleLogout = () => {
   </span>
           
   <div className="user-wrapper">
+   <span
+  className="icon track-order-icon"
+  onClick={() => navigate("/track-order")}
+  title="Track Order"
+>
+  <i className="fa-solid fa-truck-fast"></i>
+</span>
   <span
     className="icon"
     onClick={() => setUserOpen(!userOpen)}

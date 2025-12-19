@@ -6,7 +6,7 @@
 .products-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
+  gap:24px;
 }
 .action-row {
   display: flex;
@@ -18,14 +18,16 @@
 .product-card {
   background: #f7f7f7;
   border-radius: 10px;
-  height: 420px;
+   min-height: 420px; 
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
 
+
+
 .product-img-box {
-  height: 180px;
+ height: 260px;
   background: #f1f1f1;
   display: flex;
   align-items: center;
@@ -33,158 +35,116 @@
 }
 
 .product-img-box img {
-  max-height: 130px;
+   max-width: 85%;
+  max-height: 220px;
+  /* max-height: 130px; */
   object-fit: contain;
 }
 
 .product-details {
   background: #fff;
-  padding: 20px;
+  padding: 8px;              /* ⬅️ 10 → 8 */
+  line-height: 1.15;         /* ⬅️ tighter */
   display: flex;
   flex-direction: column;
   flex: 1;
-  justify-content: space-between; /* keeps Add button at bottom */
-  align-items: center;            /* center content horizontally */
-  text-align: center;             /* center text inside elements */
+
+  justify-content: flex-start; /* ✅ CHANGE HERE */
+  align-items: stretch;        /* ❌ center remove */
+  text-align: left;            /* ❌ center remove */
+   flex: 1;
 }
 
 
 .product-details h4 {
-  font-size: 14px;
+  font-size: 15px;
+  margin: 0 0 2px 0;   /* 🔥 very small gap */
 }
 
-.best {
-  font-size: 12px;
-  color: #666;
-}
-
-.rating {
+.product-details .best {
   font-size: 13px;
-  color: #f5b301;
-  margin: 8px 0;
-}
-
-.rating span {
-  color: #777;
-  font-size: 12px;
-}
-
-.price {
-  margin: 10px 0;
-}
-
-.price .new {
-  font-weight: 600;
-}
-
-.price .old {
-  text-decoration: line-through;
-  color: #999;
-  margin-left: 6px;
-}
-
-.add-btn {
-  margin-top: auto;
-  align-self: center;
-  background: #c9a24d;
-  color: #fff;
-  border: none;
-  padding: 6px 20px;
-  border-radius: 20px;
-  cursor: pointer;
-
+  margin: 0 0 4px 0;   /* 🔥 reduce para gap */
+  color: #666;
 }
 
 .rating {
   display: flex;
   align-items: center;
-  margin-bottom: 8px;
-  font-size: 14px;
+  gap: 4px;
+  margin: 0 0 6px 0;
 }
 
 .rating .star {
-  margin-right: 2px;
-  color: #ccc; /* default empty star color */
-  font-size: 20px;
+  font-size: 14px;   /* ⬅️ 20px romba perusa iruku */
+}
+
+.rating .reviews {
+  font-size: 12px;
+  margin-left: 6px;
 }
 
 .rating .star.filled {
   color: #c9a24d; /* yellow filled star */
 }
 
-.rating .reviews {
-  margin-left: 6px;
-  font-size: 12px;
-  color: #555;
+.price {
+  display: flex;
+  align-items: center;
+  max-width: calc(100% - 110px); /* 🔥 button space reserve */
+  gap: 3px;
+  font-size: 13px;     /* ✅ same size */
+  white-space: nowrap;   /* 🔥 prevents line break */
+  overflow: hidden;
+
+
 }
 
-/* ===== Responsive for tablet ===== */
-@media screen and (max-width: 1024px) {
-  .products-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablet */
-    gap: 30px;
-  }
 
-  .product-card {
-    height: auto; /* make card flexible */
-  }
 
-  .product-img-box {
-    height: 150px; /* smaller image box */
-  }
 
-  .product-details {
-    text-align: center;      /* center text */
-    align-items: center;     /* center content horizontally */
-  }
-
-  .rating {
-    justify-content: center; /* center stars and reviews */
-  }
+.price .new,
+.price .old {
+  font-size: 16px;     /* 🔥 force same size */
 }
 
-/* ===== Responsive for mobile ===== */
-@media screen and (max-width: 600px) {
-  .products-grid {
-    grid-template-columns: 1fr; /* 1 column on mobile */
-    gap: 20px;
-  }
+.price span {
+  line-height: 1;
+}
 
-  .product-card {
-    width  :100%;
-    height: auto; /* flexible height */
-  }
 
-  .product-img-box {
-    height: 130px; /* smaller image box */
-  }
 
-.product-details {
-  padding  :10px;
-    text-align: center;      /* center text */
-    align-items: center;     /* center content horizontally */
-  }
+.price .old {
+  text-decoration: line-through;  /* 🔥 old price overline */
+}
 
-  .rating {
-    justify-content: center; /* center stars and reviews */
-  }
+.action-row {
+  display: flex;
+  align-items: center;
+}
 
-  .product-details h4 {
-    font-size: 13px;
-  }
 
-  .best {
-    font-size: 11px;
-  }
+.add-btn {
+    width: 100px;
+  flex-shrink: 0;
+  background: #c9a24d;
+  color: #fff;
+  border: none;
+  padding: 3px 0px;
+  font-size: 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-bottom :10px;
+}
+ 
 
-  .price {
-    font-size: 13px;
-  }
+.price-action {
+ /* margin-top: auto; */
+  display: flex;
+  align-items: center;   /* 🔥 THIS keeps same horizontal line */
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: nowrap; /* 🔥 keep in one line */
 
-  .add-btn {
-    padding: 5px 16px;
-    font-size: 13px;
-  }
 }
 
 /* Image box */
@@ -275,3 +235,101 @@
 
 
 
+/* TABLET VIEW */
+@media (max-width: 1024px) {
+  .products-section {
+    padding: 60px 20px;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .product-card {
+    min-height: 400px;
+  }
+
+  .product-img-box {
+    height: 240px;
+  }
+
+  .product-img-box img {
+    max-height: 200px;
+  }
+
+  .add-btn {
+    width: 90px;
+    font-size: 14px;
+  }
+}
+
+/* MOBILE VIEW */
+@media (max-width: 768px) {
+  .products-section {
+    padding: 40px 16px;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .product-card {
+    min-height: auto;
+  }
+
+  .product-img-box {
+    height: 220px;
+  }
+
+  .product-img-box img {
+    max-height: 180px;
+  }
+
+  .product-details h4 {
+    font-size: 14px;
+  }
+
+  .product-details .best {
+    font-size: 12px;
+  }
+
+  .rating .star {
+    font-size: 13px;
+  }
+
+  .rating .reviews {
+    font-size: 11px;
+  }
+
+  .price {
+    font-size: 12px;
+    max-width: 100%;
+  }
+
+  .price .new,
+  .price .old {
+    font-size: 14px;
+  }
+
+  .add-btn {
+    width: 85px;
+    font-size: 14px;
+    padding: 4px 0;
+  }
+
+  /* Disable hover blur on mobile */
+  .product-card:hover .product-img-box img {
+    filter: none;
+    transform: none;
+  }
+
+  /* Always show view button on mobile */
+  .view-btn {
+    opacity: 1;
+    pointer-events: auto;
+    font-size: 12px;
+    padding: 5px 12px;
+  }
+}

@@ -219,12 +219,22 @@ body {
 }
 
 @media (max-width: 768px) {
-  .nav-container {
-    padding: 10px 15px;
+ .nav-container {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    padding: 10px 14px;
   }
 
-  .nav-logo {
-    font-size: 17px;
+   .nav-left {
+    justify-self: start;
+  }
+
+ .nav-logo {
+    justify-self: center;
+    text-align: center;
+    font-size: 16px;
+    white-space: nowrap;   /* 🔥 logo break aagama */
   }
 
   .nav-menu {
@@ -238,12 +248,20 @@ body {
   }
 
   .nav-right {
+    justify-self: end;
+    display: flex;
+    align-items: center;
     gap: 10px;
   }
 
   .icon {
-    font-size: 18px;
-    margin-right: 8px;
+    font-size: 17px;
+    margin-right: 0;
+  }
+
+   .track-order-icon {
+    margin-right: 0;
+    font-size: 17px;
   }
 
   /* Search dropdown mobile la neat-aa irukka */
@@ -267,6 +285,9 @@ body {
   .breadcrumb-wrapper {
     font-size: 12px;
     padding: 6px 0;
+  }
+    .hamburger {
+    font-size: 20px;
   }
 }
 
@@ -309,3 +330,28 @@ body {
 }
 
 
+
+.track-order-icon {
+  margin-right: 15px; /* space before next icon */
+  cursor: pointer;
+  font-size: 18px;
+  color: #333;
+}
+
+.track-order-icon:hover {
+  color: #ff6600; /* highlight on hover */
+}
+
+
+/* ===== EXTRA SMALL MOBILE (320px fix) ===== */
+@media (max-width: 360px) {
+
+  .nav-logo {
+    font-size: 14px;          /* 🔥 reduce logo size */
+    letter-spacing: 0.5px;
+  }
+
+  .nav-logo a {
+    white-space: nowrap;     /* break aagama */
+  }
+}

@@ -80,9 +80,10 @@ const isWishlisted = wishlist.some(item => item.id === id);
           </div>
 
           {/* Price */}
+          <div className="price-action">
           <div className="price">
-            <span className="new">{price}</span>
-            {oldPrice && <span className="old">{oldPrice}</span>}
+            <span className="new">₹{price}</span>
+            {oldPrice && <span className="old">₹{oldPrice}</span>}
           </div>
 
           {/* Add to Cart */}
@@ -106,6 +107,7 @@ const isWishlisted = wishlist.some(item => item.id === id);
         </div>
       </div>
 
+</div>
       {/* View Modal */}
       {isViewOpen && <View onClose={() => setIsViewOpen(false)} product={{ id, img, title, price, oldPrice, type, para }} />}
     </>

@@ -378,7 +378,7 @@ const handleWishlist = () => {
               title={p.title}
               price={p.price}
               type={p.type}
-              oldPrice="₹1,400.00"
+              oldPrice="1,400.00"
               para="Best Selling – 200+ Bought last Month"
             />
           ))}

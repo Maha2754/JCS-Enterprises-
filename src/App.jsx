@@ -27,6 +27,7 @@ import Login from "./Login/Register/Login";
 import Register from "./Login/Register/Register";
 import WishlistProvider from "./component/WishlistContext";
 import Wishlist from "./pages/Wishlist";
+import TrackOrder from "./pages/TrackOrder";
 
 function App() {
   const location = useLocation();
@@ -73,6 +74,8 @@ function App() {
         {/* Wishlist */}
         <Route path="/wishlist" element={<Wishlist/>} />
 
+        {/* track-order */}
+        <Route path="/track-order" element={<TrackOrder/>} />
 
         {/* Public Pages */}
         <Route path="/all-products" element={<AllProducts />} />

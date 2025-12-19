@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import "../style/home.css";
-import bannerImage from "../assets/banner.png";
 
 import pan from "../assets/steel-pan.png";
 import bottle from "../assets/bottle.png";
@@ -10,6 +9,7 @@ import mug from "../assets/mug.png";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../component/CartContext";
 import ProductCard from "../component/ProductCard";
+import HeroBanner from "../component/HeroBanner";
 
 function Home() {
   const navigate = useNavigate();
@@ -22,16 +22,16 @@ function Home() {
   }, [navigate]);
 
   const products = [
-    { id: 1, img: pan, title: "Steel Non-Stick Pan with Clean look", para: "Best Selling - 300+ Bought last Month", price: "₹1,000.00", oldPrice: "₹1,400.00" },
-    { id: 2, img: bottle, title: "Steel Bottle – 750ml", para: "Best Selling - 300+ Bought last Month", price: "₹1,000.00", oldPrice: "₹1,400.00" },
-    { id: 3, img: mug, title: "Steel Mug with Double Layer – 200ml", para: "Best Selling - 300+ Bought last Month", price: "₹1,000.00", oldPrice: "₹1,400.00" },
-    { id: 4, img: casserole, title: "Steel Casserole – 5 Litres", para: "Best Selling - 300+ Bought last Month", price: "₹1,000.00", oldPrice: "₹1,400.00" },
+    { id: 1, img: pan, title: "Steel Non-Stick Pan with Clean look", para: "Best Selling - 300+ Bought last Month", price: "1,000.00", oldPrice: "1,400.00" },
+    { id: 2, img: bottle, title: "Steel Bottle – 750ml", para: "Best Selling - 300+ Bought last Month", price: "1,000.00", oldPrice: "1,400.00" },
+    { id: 3, img: mug, title: "Steel Mug with Double Layer – 200ml", para: "Best Selling - 300+ Bought last Month", price: "1,000.00", oldPrice: "1,400.00" },
+    { id: 4, img: casserole, title: "Steel Casserole – 5 Litres", para: "Best Selling - 300+ Bought last Month", price: "1,000.00", oldPrice: "1,400.00" },
   ];
 
   return (
     <div className="home">
-      <section className="home-banner">
-        <img src={bannerImage} alt="Banner" />
+      <section className="hero-section">
+        <HeroBanner/>
       </section>
 
       <div className="split">
@@ -61,9 +61,11 @@ function Home() {
             </div>
           </div>
         </section>
+        </div>
 
         {/* Products */}
         <section className="products-section">
+          <h2>Our Products</h2>
           <div className="products-grid">
             {products.map((item) => (
               <ProductCard
@@ -86,7 +88,6 @@ function Home() {
 
         </section>
       </div>
-    </div>
   );
 }
 

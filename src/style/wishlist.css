@@ -1,0 +1,55 @@
+.wishlist-page {
+  padding: 30px 60px;
+}
+
+.wishlist-page h2{
+        font-size : 20px;
+        margin-bottom : 20px;
+        text-align: center;
+    }
+
+/* 🔥 GRID FORCE */
+.wishlist-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  align-items: stretch;
+}
+
+/* each card wrapper */
+.wishlist-item {
+  width: 100%;
+}
+
+/* 🔴 OVERRIDE product card width */
+.wishlist-item .product-card {
+  width: 100% !important;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .wishlist-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+  .wishlist-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .wishlist-page {
+    padding: 20px;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .wishlist-grid {
+    grid-template-columns: 1fr;
+  }
+}

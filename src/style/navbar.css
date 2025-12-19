@@ -290,3 +290,22 @@ body {
   }
 }
 
+
+
+.wishlist-icon {
+  position: relative;
+}
+
+/* Wishlist count badge */
+.wishlist-count {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: red;
+  color: #fff;
+  font-size: 10px;
+  padding: 1px 5px;
+  border-radius: 50%;
+}
+
+

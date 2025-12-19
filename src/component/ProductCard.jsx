@@ -3,11 +3,18 @@ import { CartContext } from "../component/CartContext";
 import "../style/productcard.css";
 import View from "../component/View"; // 🔥 modal component
 import { useNavigate } from "react-router-dom";
+import { WishlistContext } from "../component/WishlistContext";
 
 
 const ProductCard = ({ id, img, title, price, type, oldPrice, para, rating = 5, reviews = 20 }) => {
   const { addToCart } = useContext(CartContext);
   const [isViewOpen, setIsViewOpen] = useState(false); // modal state
+   const [liked, setLiked] = useState(false);
+
+   const { addToWishlist, removeFromWishlist, wishlist } = useContext(WishlistContext);
+
+const isWishlisted = wishlist.some(item => item.id === id);
+
     const navigate = useNavigate();
 
   return (
@@ -32,6 +39,21 @@ const ProductCard = ({ id, img, title, price, type, oldPrice, para, rating = 5, 
    // 🔥 IMAGE CLICK → BUY PAGE
         >
           <img src={img} alt={title} />
+           <span
+  className={`wishlist-btn ${isWishlisted ? "active" : ""}`}
+  onClick={(e) => {
+    e.stopPropagation();
+
+    if (isWishlisted) {
+      removeFromWishlist(id);
+    } else {
+      addToWishlist({ id, img, title, price, oldPrice, type, para });
+    }
+  }}
+>
+  <i className="fa-solid fa-heart"></i>
+</span>
+
           <span
             className="view-btn"
             onClick={(e) => {

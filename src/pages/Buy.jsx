@@ -19,6 +19,8 @@ import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { CartContext } from "../component/CartContext";
 import ProductCard from "../component/ProductCard";
 
+import { WishlistContext } from "../component/WishlistContext";
+
 // CENTRAL PRODUCT LIST
 const allProducts = [
   { id: 1, type: "pan", title: "Steel Pan", img: pan1, price: 999 },
@@ -33,6 +35,17 @@ const Buy = () => {
   const location = useLocation();
 
   const { addToCart } = useContext(CartContext);
+const { addToWishlist } = useContext(WishlistContext);
+const handleWishlist = () => {
+  addToWishlist({
+    id: product.id,
+    img: product.img,
+    title: product.title,
+    price: product.price,
+    type: product.type,
+  });
+  setIsWishlisted(true);
+};
 
   // FIND PRODUCT BY ID
   // const product = allProducts.find((p) => p.id === parseInt(id));
@@ -149,13 +162,13 @@ addToCart({
           </div>
 
          <div className="action-row">
-  <div className="unit-box">
+<div className="unit-box">
     <span>Units:</span>
     <input
       type="number"
-      value={quantity}
       min="1"
-      onChange={(e) => setQuantity(parseInt(e.target.value) || 1)}
+      value={quantity}
+      onChange={(e) => setQuantity(e.target.value)}
     />
   </div>
 
@@ -189,12 +202,12 @@ addToCart({
           <div className="wish-row">
             <span>⇄ Compare</span>
             <span
-              className={`wishlist ${isWishlisted ? "active" : ""}`}
-              onClick={toggleWishlist}
-            >
-              <i className="fa-solid fa-heart"></i>
-              {isWishlisted ? " Added to Wishlist" : " Add to Wishlist"}
-            </span>
+  className={`wishlist ${isWishlisted ? "active" : ""}`}
+  onClick={handleWishlist}
+>
+  <i className="fa-solid fa-heart"></i>
+  {isWishlisted ? " Added to Wishlist" : " Add to Wishlist"}
+</span>
           </div>
 
           <div className="share-row">

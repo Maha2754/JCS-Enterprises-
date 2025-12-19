@@ -171,18 +171,42 @@
 /* Compare / Wishlist */
 .compare-wishlist {
   display: flex;
-  gap: 10px;
+  gap: 10px;                /* space between buttons */
+  align-items: center;       /* vertically center buttons */
+  width: 100%;
+  justify-content: flex-start; /* keep both buttons on the left */
+  flex-shrink: 0;            /* prevent shrinking on small screens */
 }
 
 .compare-wishlist button {
-  display: flex;
-  align-items: center;
-  gap: 5px;
+  display: flex !important;
+  justify-content: flex-start !important; 
+  flex-shrink: 0 !important; 
+
+  align-items: center !important;
+  gap: 5px !important;
   border: 1px solid #ccc;
-  padding: 5px 10px;
   border-radius: 5px;
-  background: #f7f7f7;
+  padding: 5px 10px;
+  background: transparent;
   cursor: pointer;
+}
+
+.wishlist-btn {
+  margin-left: 0px !important; 
+  margin-bottom :20px;
+  position: relative !important;  
+         /* spacing from Compare button */
+}
+
+
+.wishlist-btn i {
+  transition: color 0.3s ease;
+}
+
+/* Active RED heart */
+.wishlist-btn.active i {
+  color: red;
 }
 
 /* Share icons */

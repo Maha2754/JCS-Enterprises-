@@ -236,4 +236,42 @@
   cursor: pointer;
 }
 
+/* Whislist */
+
+.product-img-box {
+  position: relative;
+}
+
+/* ❤️ Wishlist */
+.wishlist-btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #fff;
+  border-radius: 50%;
+  padding: 7px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  z-index: 2;
+  color: #bbb;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.wishlist-btn:hover {
+  transform: scale(1.1);
+}
+
+.wishlist-btn.active {
+  color: red;
+}
+
+/* 👁 View */
+.view-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+
 

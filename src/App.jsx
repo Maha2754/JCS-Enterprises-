@@ -25,6 +25,8 @@ import AllProducts from "./pages/AllProducts";
 // Auth
 import Login from "./Login/Register/Login";
 import Register from "./Login/Register/Register";
+import WishlistProvider from "./component/WishlistContext";
+import Wishlist from "./pages/Wishlist";
 
 function App() {
   const location = useLocation();
@@ -33,6 +35,8 @@ function App() {
   const hideNavbar = ["/login", "/register"].includes(location.pathname);
 
   return (
+
+     <WishlistProvider>
     <CartProvider>
       <ScrollToTop />
 
@@ -66,6 +70,10 @@ function App() {
         <Route path="/payment" element={<Payment />} />
         <Route path="/success" element={<Success />} />
 
+        {/* Wishlist */}
+        <Route path="/wishlist" element={<Wishlist/>} />
+
+
         {/* Public Pages */}
         <Route path="/all-products" element={<AllProducts />} />
         <Route path="/login" element={<Login />} />
@@ -77,6 +85,7 @@ function App() {
 
       <Footer />
     </CartProvider>
+    </WishlistProvider>
   );
 }
 

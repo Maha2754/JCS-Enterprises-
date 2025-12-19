@@ -3,8 +3,12 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { CartContext } from "../component/CartContext";
 import "../style/navbar.css";
 import Breadcrumb from "../component/Breadcrumb";
+import { WishlistContext } from "../component/WishlistContext";
+
 
 const Navbar = () => {
+  const { wishlist } = useContext(WishlistContext);
+
 
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -68,6 +72,14 @@ const handleLogout = () => {
         </div>
 
         <div className="nav-right">
+
+  {/* ❤️ Wishlist icon */}
+  <span className="icon wishlist-icon" onClick={() => navigate("/wishlist")}>
+    <i className="fa-regular fa-heart"></i>
+    {wishlist.length > 0 && (
+      <span className="wishlist-count">{wishlist.length}</span>
+    )}
+  </span>
           
   <div className="user-wrapper">
   <span

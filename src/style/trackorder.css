@@ -19,14 +19,14 @@
 .track-order-form button {
   padding: 10px 20px;
   border: none;
-  background: #ff6600;
+  background: #c9a24d;
   color: #fff;
   border-radius: 5px;
   cursor: pointer;
 }
 
 .track-order-form button:hover {
-  background: #e55a00;
+  background: #c9a24d;
 }
 
 .error {
@@ -65,13 +65,13 @@
   right: 15px;
   font-size: 22px;
   font-weight: bold;
-  color: #ff6600;
+  color: black;
   cursor: pointer;
   transition: color 0.2s;
 }
 
 .modal-close:hover {
-  color: #e55a00;
+  color: #c9a24d;
 }
 
 /* Shipment tracker */
@@ -105,7 +105,7 @@
 }
 
 .tracker-step.completed:not(:last-child)::after {
-  background: #ff6600;
+  background: #c9a24d;
 }
 
 .tracker-dot {
@@ -118,7 +118,7 @@
 }
 
 .tracker-dot.completed {
-  background: #ff6600;
+  background: #28a745;
 }
 
 .tracker-label {
@@ -180,22 +180,7 @@
 
 /* ===== MOBILE ===== */
 @media screen and (max-width: 480px) {
-  .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 100;
-    overflow-y: auto; /* scrollable */
-    padding: 20px 0;
-  }
-
-.modal-content {
+  .modal-content {
     position: relative; /* IMPORTANT */
     width: 95%;
     max-height: 90vh;
@@ -211,45 +196,11 @@
     font-size: 22px;
     z-index: 20;
   }
-
-  .order-item {
-    flex-direction: column;
-    align-items: center; /* center items horizontally */
-  }
-
-  .order-item img {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 5px;
-  }
-
-  .tracker-label {
-    font-size: 10px;
-  }
-
-  .truck {
-    font-size: 20px;
-    top: -20px;
-  }
 }
 
 /* ===== TABLET ===== */
 @media screen and (max-width: 768px) {
-  .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 100;
-    overflow-y: auto;
-    padding: 20px 0;
-  }
- .modal-content {
+  .modal-content {
     position: relative; /* IMPORTANT */
     width: 90%;
     max-height: 90vh;
@@ -265,24 +216,84 @@
     font-size: 24px;
     z-index: 20;
   }
+}
 
-  .order-item {
-    flex-direction: column;
-    align-items: center; /* center items horizontally */
+/* ===== MOBILE ===== */
+@media screen and (max-width: 480px) {
+  .modal-content {
+    position: relative; /* IMPORTANT */
+    width: 95%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 20px;
+    text-align: center;
   }
 
-  .order-item img {
-    width: 55px;
-    height: 55px;
-    margin-bottom: 5px;
-  }
-
-  .tracker-label {
-    font-size: 11px;
-  }
-
-  .truck {
+  .modal-close {
+    position: absolute;   /* 🔥 FIX */
+    top: 12px;
+    right: 12px;
     font-size: 22px;
-    top: -22px;
+    z-index: 20;
   }
 }
+
+/* ===== TABLET ===== */
+@media screen and (max-width: 768px) {
+  .modal-content {
+    position: relative; /* IMPORTANT */
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 25px;
+    text-align: center;
+  }
+
+  .modal-close {
+    position: absolute;   /* 🔥 FIX */
+    top: 14px;
+    right: 14px;
+    font-size: 24px;
+    z-index: 20;
+  }
+}
+/* ===== MOBILE ===== */
+@media screen and (max-width: 480px) {
+  .modal-content {
+    position: relative; /* IMPORTANT */
+    width: 95%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .modal-close {
+    position: absolute;   /* 🔥 FIX */
+    top: 12px;
+    right: 12px;
+    font-size: 22px;
+    z-index: 20;
+  }
+}
+
+/* ===== TABLET ===== */
+@media screen and (max-width: 768px) {
+  .modal-content {
+    position: relative; /* IMPORTANT */
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 25px;
+    text-align: center;
+  }
+
+  .modal-close {
+    position: absolute;   /* 🔥 FIX */
+    top: 14px;
+    right: 14px;
+    font-size: 24px;
+    z-index: 20;
+  }
+}
+

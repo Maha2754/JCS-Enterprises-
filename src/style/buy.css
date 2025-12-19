@@ -209,6 +209,11 @@ hr {
   cursor: pointer;
 }
 
+.share-row a{
+  color : black;
+  cursor: pointer;
+}
+
 /* META TWO COLUMN */
 .meta-grid {
   display: grid;
@@ -462,4 +467,25 @@ hr {
     overflow: hidden;
     text-overflow: ellipsis;  /* truncate if too long */
   }
+}
+
+
+
+
+.buypage-wishlist {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #333;
+  font-weight: 500;
+}
+
+.buypage-wishlist i {
+  color: #777;
+  transition: color 0.3s ease;
+}
+
+.buypage-wishlist.active i {
+  color: red;
 }

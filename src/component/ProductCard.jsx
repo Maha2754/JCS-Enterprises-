@@ -39,8 +39,8 @@ const isWishlisted = wishlist.some(item => item.id === id);
    // 🔥 IMAGE CLICK → BUY PAGE
         >
           <img src={img} alt={title} />
-           <span
-  className={`wishlist-btn ${isWishlisted ? "active" : ""}`}
+<span
+  className={`productcard-wishlist-btn ${isWishlisted ? "active" : ""}`}
   onClick={(e) => {
     e.stopPropagation();
 
@@ -53,6 +53,7 @@ const isWishlisted = wishlist.some(item => item.id === id);
 >
   <i className="fa-solid fa-heart"></i>
 </span>
+
 
           <span
             className="view-btn"

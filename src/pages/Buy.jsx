@@ -35,17 +35,10 @@ const Buy = () => {
   const location = useLocation();
 
   const { addToCart } = useContext(CartContext);
-const { addToWishlist } = useContext(WishlistContext);
-const handleWishlist = () => {
-  addToWishlist({
-    id: product.id,
-    img: product.img,
-    title: product.title,
-    price: product.price,
-    type: product.type,
-  });
-  setIsWishlisted(true);
-};
+const { addToWishlist, removeFromWishlist, wishlist } = useContext(WishlistContext);
+
+
+
 
   // FIND PRODUCT BY ID
   // const product = allProducts.find((p) => p.id === parseInt(id));
@@ -97,10 +90,6 @@ useEffect(() => {
 
 
   const [quantity, setQuantity] = useState(1);
-  const [isWishlisted, setIsWishlisted] = useState(false);
-
-  const toggleWishlist = () => setIsWishlisted(!isWishlisted);
-
 const handleBuyNow = () => {
 addToCart({
   id: product.id,
@@ -111,6 +100,27 @@ addToCart({
   quantity: Number(quantity) || 1,
 })
   navigate("/cart");
+};
+
+// Check if product already in wishlist (initial state)
+const [isWishlisted, setIsWishlisted] = useState(
+  wishlist.some(item => item.id === product.id)
+);
+
+// Toggle wishlist function
+const handleWishlist = () => {
+  if (!isWishlisted) {
+    addToWishlist({
+      id: product.id,
+      img: product.img,
+      title: product.title,
+      price: product.price,
+      type: product.type,
+    });
+  } else {
+    removeFromWishlist(product.id);
+  }
+  setIsWishlisted(!isWishlisted);
 };
 
 
@@ -199,24 +209,58 @@ addToCart({
 
           <hr />
 
-          <div className="wish-row">
-            <span>⇄ Compare</span>
-            <span
-  className={`wishlist ${isWishlisted ? "active" : ""}`}
-  onClick={handleWishlist}
->
-  <i className="fa-solid fa-heart"></i>
-  {isWishlisted ? " Added to Wishlist" : " Add to Wishlist"}
-</span>
-          </div>
+<div className="wish-row">
+  <span>⇄ Compare</span>
+  <span
+    className={`buypage-wishlist ${isWishlisted ? "active" : ""}`}
+    onClick={handleWishlist}
+  >
+    <i className="fa-solid fa-heart"></i>
+    {isWishlisted ? " Wishlist Added" : " Add to Wishlist"}
+  </span>
+</div>
+
 
           <div className="share-row">
-            <span>Share :</span>
-            <i className="fab fa-facebook-f"></i>
-            <i className="fab fa-instagram"></i>
-            <i className="fab fa-twitter"></i>
-            <i className="fab fa-whatsapp"></i>
-          </div>
+  <span>Share :</span>
+
+  {/* WhatsApp */}
+  <a
+    href={`https://wa.me/?text=Check out this product: ${window.location.href}`}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <i className="fab fa-whatsapp"></i>
+  </a>
+
+  {/* Twitter */}
+  <a
+    href={`https://twitter.com/intent/tweet?url=${window.location.href}&text=Check out this product!`}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <i className="fab fa-twitter"></i>
+  </a>
+
+  {/* Facebook */}
+  <a
+    href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <i className="fab fa-facebook-f"></i>
+  </a>
+
+  {/* Instagram profile link */}
+  <a
+    href="https://instagram.com/yourprofile"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <i className="fab fa-instagram"></i>
+  </a>
+</div>
+
 
           <div className="meta-grid">
             <p>

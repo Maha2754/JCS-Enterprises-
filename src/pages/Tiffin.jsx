@@ -7,8 +7,13 @@ import { Link } from "react-router-dom";
 import ProductCard from "../component/ProductCard";
 import FilterBar from "../component/FilterBar";
 
-import tiffin from "../assets/tiffin.png";
+import tiffin1 from "../assets/tiffin.png";
+import tiffin2 from "../assets/tiffin2.png";
 
+ const imageMap = {
+  tiffin: tiffin1,
+  tiffin1: tiffin2,
+  }
 
 /*  pagination settings */
 const ITEMS_PER_PAGE = 16;
@@ -17,9 +22,7 @@ export default function Tiffin() {
 
   const { data, loading, error } = useFetch("/data/dummydata.json");
 
-  const imageMap = {
-    tiffin: tiffin,
-  }
+ 
   const allProducts = data.filter(
     (item) => item.type === "tiffin"
   );
@@ -97,15 +100,21 @@ export default function Tiffin() {
 
         <div className="products-grid">
           {currentProducts.map((item) => (
-            <ProductCard
-              key={item.id}
-              id={item.id}
-              img={imageMap[item.img]}
-              title={item.title}
-              price={item.price}
-              oldPrice={item.oldPrice}
-              para={item.para}
-            />
+  <Link
+    to={`/buy/${item.id}`}   // buy page route
+    state={item}             // pass full product
+    key={item.id}
+    style={{ textDecoration: "none", color: "inherit" }} // keep card style same
+  >
+    <ProductCard
+      id={item.id}
+      img={imageMap[item.img] || tiffin1} 
+      title={item.title}
+      price={item.price}
+      oldPrice={item.oldPrice}
+      para={item.para}
+    />
+  </Link>
           ))}
         </div>
 

@@ -2,7 +2,7 @@
   {
     "id": 1,
     "type": "pan",
-    "title": "Steel Non-Stick Pan with Clean look",
+    "title": "Steel Non-Stick Pan with Clean Look",
     "para": "Best Selling - 300+ Bought last Month",
     "price": "1,000",
     "oldPrice": "1,400",
@@ -11,7 +11,7 @@
   {
     "id": 2,
     "type": "bottle",
-    "title": "Steel Bottle – 750ml",
+    "title": "Modern Steel Bottle – 750ml",
     "para": "Best Selling - 300+ Bought last Month",
     "price": "1,000",
     "oldPrice": "1,400",
@@ -26,7 +26,6 @@
     "oldPrice": "1,400",
     "img": "mug",
     "isFestive": true
-
   },
   {
     "id": 4,
@@ -37,18 +36,17 @@
     "oldPrice": "1,400",
     "img": "casserole",
     "isFestive": true
-
   },
-   {
+  {
     "id": 5,
     "type": "bottle",
-    "title": "Steel Bottle – 750ml",
+    "title": "Fancy Water Bottle – 750ml",
     "para": "Best Selling - 300+ Bought last Month",
     "price": "999",
     "oldPrice": "1,400",
-    "img": "bottle"
+    "img": "bottle1"
   },
-    {
+  {
     "id": 6,
     "type": "bowl",
     "title": "Steel Bowl 500ml",
@@ -60,22 +58,22 @@
   {
     "id": 7,
     "type": "bowl",
-    "title": "Steel Bowl 750ml",
+    "title": "Plastic Bowl 500ml",
     "price": "1200",
     "oldPrice": "1500",
     "para": "Best Selling Product",
-    "img": "bowl"
+    "img": "bowl1"
   },
   {
     "id": 8,
     "type": "bottle",
-    "title": "Steel Bottle 750ml",
+    "title": "Traveler Bottle – 750ml",
     "price": "1200",
     "oldPrice": "1500",
     "para": "Best Selling Product",
-    "img": "bottle"
+    "img": "bottle3"
   },
-    {
+  {
     "id": 9,
     "type": "drinkware",
     "title": "DrinkWare 500ml",
@@ -91,22 +89,21 @@
     "price": "1200",
     "oldPrice": "1500",
     "para": "Best Selling Product",
-    "img": "drink",
+    "img": "drink1",
     "isFestive": true
-
   },
   {
     "id": 11,
     "type": "bowl",
-    "title": "Steel Bowl 750ml",
+    "title": "Chines Bowl 750ml Deluxe",
     "price": "1200",
     "oldPrice": "1500",
     "para": "Best Selling Product",
-    "img": "bowl"
+    "img": "bowl2"
   },
-    {
+  {
     "id": 12,
-    "type": "pan1",
+    "type": "pan",
     "title": "Steel Pan Combo Offer",
     "price": "2500",
     "oldPrice": "3200",
@@ -117,21 +114,21 @@
   {
     "id": 13,
     "type": "bottle",
-    "title": "Steel Bottle Festive Pack",
+    "title": "Cartoons anime drinking water Bottle",
     "price": "1800",
     "oldPrice": "2300",
     "para": "Diwali Special Offer",
-    "img": "bottle",
+    "img": "bottle2",
     "isFestive": true
   },
   {
     "id": 14,
     "type": "bowl",
-    "title": "Steel Bowl Set",
+    "title": "Altra delux Bowl Set",
     "price": "1600",
     "oldPrice": "2000",
     "para": "Festive Discount",
-    "img": "bowl",
+    "img": "bowl3",
     "isFestive": true
   },
   {
@@ -141,20 +138,20 @@
     "price": "1400",
     "oldPrice": "1800",
     "para": "Regular Product",
-    "img": "drink",
+    "img": "drink2",
     "isFestive": false
   },
-    {
+  {
     "id": 16,
     "type": "lunchkit",
-    "title": "Lunchkit set",
+    "title": "Lunchkit Set",
     "price": "1400",
     "oldPrice": "1800",
     "para": "Regular Product",
     "img": "lunch",
     "isFestive": true
   },
-      {
+  {
     "id": 17,
     "type": "storage",
     "title": "Storage Set",
@@ -164,88 +161,104 @@
     "img": "storage",
     "isFestive": true
   },
-      {
+  {
     "id": 18,
     "type": "tiffin",
-    "title": "Tiffin Set",
+    "title": "Tiffin Set Small",
     "price": "1400",
     "oldPrice": "1800",
     "para": "Regular Product",
     "img": "tiffin",
     "isFestive": true
   },
-      {
+  {
     "id": 19,
     "type": "tiffin",
-    "title": "Tiffin Set",
+    "title": "Tiffin Set Large",
     "price": "1400",
     "oldPrice": "1800",
     "para": "Regular Product",
-    "img": "tiffin",
+    "img": "tiffin1",
     "isFestive": false
   },
-    {
+  {
     "id": 20,
     "type": "casserole",
-    "title": "Steel Casserole – 5 Litres",
+    "title": "Steel Casserole – 5 Litres Classic",
     "para": "Best Selling - 300+ Bought last Month",
     "price": "1,000",
     "oldPrice": "1,400",
-    "img": "casserole",
+    "img": "casserole1",
     "isFestive": true
-
   },
-    {
+  {
     "id": 21,
     "type": "casserole",
-    "title": "Steel Casserole – 5 Litres",
+    "title": "Steel Casserole – 5 Litres Deluxe",
     "para": "Best Selling - 300+ Bought last Month",
     "price": "1,000",
     "oldPrice": "1,400",
-    "img": "casserole",
+    "img": "casserole2",
     "isFestive": true
-
   },
-    {
+  {
     "id": 22,
     "type": "mug",
-    "title": "Steel Mug with Double Layer – 200ml",
+    "title": "Steel Mug Classic – 200ml",
     "para": "Best Selling - 300+ Bought last Month",
     "price": "1,000",
     "oldPrice": "1,400",
-    "img": "mug",
+    "img": "mug1",
     "isFestive": true
-
-  },  {
+  },
+  {
     "id": 23,
     "type": "mug",
-    "title": "Steel Mug with Double Layer – 200ml",
+    "title": "Steel Mug Premium – 200ml",
     "para": "Best Selling - 300+ Bought last Month",
     "price": "1,000",
     "oldPrice": "1,400",
-    "img": "mug",
+    "img": "mug2",
     "isFestive": true
-
   },
-      {
+  {
     "id": 24,
     "type": "pan",
-    "title": "Steel Pan Combo Offer",
+    "title": "Steel Pan Festive Combo",
     "price": "2000",
     "oldPrice": "3000",
     "para": "Festive Special Combo",
-    "img": "pan",
+    "img": "pan2",
     "isFestive": true
   },
-      {
+  {
     "id": 25,
     "type": "pan",
-    "title": "Steel Pan Combo Offer",
+    "title": "Steel Pan Combo Deluxe",
     "price": "2500",
     "oldPrice": "3200",
     "para": "Festive Special Combo",
-    "img": "pan",
+    "img": "pan3",
+    "isFestive": true
+  },
+   {
+    "id": 26,
+    "type": "lunchkit",
+    "title": "Model Lunchkit set",
+    "price": "1400",
+    "oldPrice": "1800",
+    "para": "Regular Product",
+    "img": "lunch1",
+    "isFestive": true
+  },
+    {
+    "id": 27,
+    "type": "storage",
+    "title": "Model Storage Set",
+    "price": "1400",
+    "oldPrice": "1800",
+    "para": "Regular Product",
+    "img": "storage1",
     "isFestive": true
   }
-  
 ]

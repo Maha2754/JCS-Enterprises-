@@ -7,7 +7,8 @@ import { Link } from "react-router-dom";
 import ProductCard from "../component/ProductCard";
 import FilterBar from "../component/FilterBar";
 
-import store from "../assets/storage.png";
+import store1 from "../assets/storage.png";
+import store2 from "../assets/storage2.png";
 
 
 /* pagination settings */
@@ -17,7 +18,8 @@ export default function Storage() {
   const { data, loading, error } = useFetch("/data/dummydata.json");
 
   const imageMap = {
-    storage: store,
+  storage : store1,
+  storage1 : store2,
   }
   const allProducts = data.filter(
     (item) => item.type === "storage"
@@ -98,15 +100,21 @@ export default function Storage() {
 
         <div className="products-grid">
           {currentProducts.map((item) => (
-            <ProductCard
-              key={item.id}
-              id={item.id}
-              img={imageMap[item.img]}
-              title={item.title}
-              price={item.price}
-              oldPrice={item.oldPrice}
-              para={item.para}
-            />
+  <Link
+    to={`/buy/${item.id}`}   
+    state={item}             
+    key={item.id}
+    style={{ textDecoration: "none", color: "inherit" }} 
+  >
+    <ProductCard
+      id={item.id}
+      img={imageMap[item.img] || store1} 
+      title={item.title}
+      price={item.price}
+      oldPrice={item.oldPrice}
+      para={item.para}
+    />
+  </Link>
           ))}
         </div>
 

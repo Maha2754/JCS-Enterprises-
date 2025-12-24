@@ -2,32 +2,95 @@ import React, { useContext } from "react";
 import { CartContext } from "../component/CartContext";
 import "../style/cart.css";
 import { Link } from "react-router-dom";
-import pan from "../assets/steel-pan.png";
-import bottle from "../assets/bottle.png";
-import casserole from "../assets/casserole.png";
-import mug from "../assets/mug.png";
+
 import { useNavigate } from "react-router-dom";
 import ProductCard from "../component/ProductCard";
 import useFetch from "../hooks/useFetch";
 
-import bowl from "../assets/bowl.png";
-import drink from "../assets/drink.png";
-import lunch from "../assets/lunch.png";
-import storage from "../assets/storage.png";
-import tiffin from "../assets/tiffin.png";
+// PAN
+import pan1 from "../assets/steel-pan.png";
+import pan2 from "../assets/pan1.png";
+import pan3 from "../assets/pan2.png";
 
-const imageMap = {
-  pan,
-  bottle,
-  casserole,
-  mug,
-  bowl,
-  drink,
-  lunch,
-  storage,
-  tiffin,
+// BOTTLE
+import bottle1 from "../assets/bottle.png";
+import bottle2 from "../assets/bottle2.png";
+import bottle3 from "../assets/bottle3.png";
+import bottle4 from "../assets/bottle4.png";
+
+// BOWL
+import bowl1 from "../assets/bowl.png";
+import bowl2 from "../assets/bowl2.png";
+import bowl3 from "../assets/bowl3.png";
+
+// DRINK
+import drink1 from "../assets/drink.png";
+import drink2 from "../assets/drink2.png";
+import drink3 from "../assets/drink3.png";
+
+// MUG
+import mug1 from "../assets/mug.png";
+import mug2 from "../assets/mug2.png";
+import mug3 from "../assets/mug3.png";
+
+// CASSEROLE
+import cas1 from "../assets/casserole.png";
+import cas2 from "../assets/casserole2.png";
+import cas3 from "../assets/casserole3.png";
+
+// TIFFIN
+import tiffin1 from "../assets/tiffin.png";
+import tiffin2 from "../assets/tiffin2.png";
+
+import store1 from "../assets/storage.png";
+import store2 from "../assets/storage2.png";
+
+import Lunch1 from "../assets/lunch.png";
+import Lunch2 from "../assets/lunch2.png";
+
+const imgMap = {
+  // pan
+  pan: pan1,
+  pan1: pan2,
+  pan2: pan3,
+
+  // bottle
+  bottle: bottle1,
+  bottle1: bottle1,
+  bottle2: bottle2,
+  bottle3: bottle3,
+
+  // bowl
+  bowl: bowl1,
+  bowl1: bowl2,
+  bowl2: bowl3,
+
+  // drinkware
+  drink: drink1,
+  drink1: drink2,
+  drink2: drink3,
+
+  // mug
+  mug: mug1,
+  mug1: mug2,
+  mug2: mug3,
+
+  // casserole
+  casserole: cas1,
+  casserole1: cas2,
+  casserole2: cas3,
+
+  // tiffin
+  tiffin: tiffin1,
+  tiffin1: tiffin2,
+
+    storage : store1,
+    storage1 : store2,
+  
+    lunch : Lunch1,
+    lunch1 : Lunch2,
+
 };
-
 
 
 const Cart = () => {
@@ -125,26 +188,28 @@ const Cart = () => {
           </p>
         ) : (
           <div className="products-grid">
-            {limitedFrequent.map((item) => (
-              <ProductCard
-                key={item.id}
-                id={item.id}
-                img={imageMap[item.type]}
-                title={item.title}
-                price={`${item.price}`}
-                oldPrice={`${item.oldPrice}`}
-                para={item.para}
-                type={item.type}
-                onAddToCart={() =>
-                  addToCart({
-                    id: item.id,
-                    img: imageMap[item.type],
-                    title: item.title,
-                    price: item.price,
-                    type: item.type,
-                  })
-                }
-              />
+            {limitedFrequent.map((p) => (
+<ProductCard
+  key={p.id}
+  id={p.id}
+ img={imgMap[p.img] || imgMap[p.type]} 
+  title={p.title}
+  price={p.price}
+  type={p.type}
+  oldPrice={p.oldPrice}
+  para={p.para}
+  onAddToCart={() =>
+    addToCart({
+      id: p.id,
+      img: imgMap[p.type],
+      title: p.title,
+      price: p.price,
+      type: p.type,
+    })
+  }
+/>
+
+
             ))}
           </div>
         )}

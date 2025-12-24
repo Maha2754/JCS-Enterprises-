@@ -5,35 +5,34 @@ import bannerImage from "../assets/banners/banner.png";
 import { Link } from "react-router-dom";
 import ProductCard from "../component/ProductCard";
 import FilterBar from "../component/FilterBar";
-import Drink from "../assets/drink.png";
+import drink1 from "../assets/drink.png";
+import drink2 from "../assets/drink2.png";
+import drink3 from "../assets/drink3.png";
 
 /* pagination settings */
 const ITEMS_PER_PAGE = 16;
 
 export default function Drinkware() {
   const { data, loading, error } = useFetch("/data/dummydata.json");
+
   const imageMap = {
-    drink: Drink,
+    drink: drink1,
+    drink1: drink2,
+    drink2: drink3,
   };
 
-  const allProducts = data.filter(
-    (item) => item.type === "drinkware"
-  );
+  const allProducts = data.filter((item) => item.type === "drinkware");
 
   const [currentPage, setCurrentPage] = useState(1);
-
-
   const [selectedSize, setSelectedSize] = useState("");
   const [selectedLitre, setSelectedLitre] = useState("");
   const [sortType, setSortType] = useState("default");
-
-
 
   const getFilteredProducts = () => {
     let products = [...allProducts];
 
     if (selectedSize) {
-      products = products.filter(item =>
+      products = products.filter((item) =>
         item.title.toLowerCase().includes(selectedSize.toLowerCase())
       );
     }
@@ -49,23 +48,16 @@ export default function Drinkware() {
     return products;
   };
 
-
   const filteredProducts = getFilteredProducts();
-
   const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
-
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const currentProducts = filteredProducts.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
-  const currentProducts = filteredProducts.slice(
-    startIndex,
-    startIndex + ITEMS_PER_PAGE
-  );
   return (
     <div className="drinkware-page">
       {/* BANNER */}
       <section className="banner">
         <img src={bannerImage} alt="Drinkware Banner" />
-
         <div className="banner-content">
           <h1>Drinkware</h1>
           <p>
@@ -91,21 +83,25 @@ export default function Drinkware() {
       <section className="products-section" id="shop">
         {loading && <p>Loading...</p>}
         {error && <p>Error loading products</p>}
-
         <div className="products-grid">
           {currentProducts.map((item) => (
-            <ProductCard
+            <Link
+              to={`/buy/${item.id}`}
+              state={item}
               key={item.id}
-              id={item.id}
-              img={imageMap[item.img]}
-              title={item.title}
-              price={item.price}
-              oldPrice={item.oldPrice}
-              para={item.para}
-            />
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <ProductCard
+                id={item.id}
+                img={imageMap[item.img] || drink1} // <-- fix done
+                title={item.title}
+                price={item.price}
+                oldPrice={item.oldPrice}
+                para={item.para}
+              />
+            </Link>
           ))}
         </div>
-
 
         {/* PAGINATION */}
         <div className="pagination">
@@ -120,9 +116,7 @@ export default function Drinkware() {
           ))}
 
           {currentPage < totalPages && (
-            <span onClick={() => setCurrentPage(currentPage + 1)}>
-              Next
-            </span>
+            <span onClick={() => setCurrentPage(currentPage + 1)}>Next</span>
           )}
         </div>
       </section>

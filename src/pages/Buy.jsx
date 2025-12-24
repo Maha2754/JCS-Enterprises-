@@ -2,17 +2,47 @@ import React, { useState, useEffect, useContext } from "react";
 import "../style/buy.css";
 import useFetch from "../hooks/useFetch";
 
-// images
+// PAN
 import pan1 from "../assets/steel-pan.png";
 import pan2 from "../assets/pan1.png";
+import pan3 from "../assets/pan2.png";
+
+// BOTTLE
 import bottle1 from "../assets/bottle.png";
+import bottle2 from "../assets/bottle2.png";
+import bottle3 from "../assets/bottle3.png";
+import bottle4 from "../assets/bottle4.png";
+
+// BOWL
+import bowl1 from "../assets/bowl.png";
+import bowl2 from "../assets/bowl2.png";
+import bowl3 from "../assets/bowl3.png";
+
+// DRINK
+import drink1 from "../assets/drink.png";
+import drink2 from "../assets/drink2.png";
+import drink3 from "../assets/drink3.png";
+
+// MUG
 import mug1 from "../assets/mug.png";
+import mug2 from "../assets/mug2.png";
+import mug3 from "../assets/mug3.png";
+
+// CASSEROLE
 import cas1 from "../assets/casserole.png";
-import Bowl from "../assets/bowl.png";
-import Drink from "../assets/drink.png";
-import tiffin from "../assets/tiffin.png";
-import Lunch from "../assets/lunch.png";
-import store from "../assets/storage.png";
+import cas2 from "../assets/casserole2.png";
+import cas3 from "../assets/casserole3.png";
+
+// TIFFIN
+import tiffin1 from "../assets/tiffin.png";
+import tiffin2 from "../assets/tiffin2.png";
+
+import store1 from "../assets/storage.png";
+import store2 from "../assets/storage2.png";
+
+import Lunch1 from "../assets/lunch.png";
+import Lunch2 from "../assets/lunch2.png";
+
 
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { CartContext } from "../component/CartContext";
@@ -20,15 +50,48 @@ import ProductCard from "../component/ProductCard";
 import { WishlistContext } from "../component/WishlistContext";
 
 const imgMap = {
+  // pan
   pan: pan1,
+  pan1: pan2,
+  pan2: pan3,
+
+  // bottle
   bottle: bottle1,
+  bottle1: bottle2,
+  bottle2: bottle3,
+  bottle3: bottle4,
+
+  // bowl
+  bowl: bowl1,
+  bowl1: bowl2,
+  bowl2: bowl3,
+
+  // drinkware
+  drink: drink1,
+  drink1: drink2,
+  drink2: drink3,
+
+  // mug
   mug: mug1,
+  mug1: mug2,
+  mug2: mug3,
+
+  // casserole
   casserole: cas1,
-  bowl: Bowl,
-  drink: Drink,
-  tiffin: tiffin,
-  storage: store,
-  lunch: Lunch,
+  casserole1: cas2,
+  casserole2: cas3,
+
+  // tiffin
+  tiffin: tiffin1,
+  tiffin1: tiffin2,
+
+  storage : store1,
+  storage1 : store2,
+
+  lunch : Lunch1,
+  lunch1 : Lunch2,
+
+
 };
 
 const sizesByType = {
@@ -36,17 +99,11 @@ const sizesByType = {
   bottle: ["500ml", "750ml", "1000ml"],
   mug: ["150ml", "200ml", "300ml"],
   casserole: ["2L", "3L", "5L"],
-};
-
-const thumbsByType = {
-  pan: [pan1, pan2, pan1, pan2],
-  bottle: [bottle1, bottle1, bottle1, bottle1],
-  mug: [mug1, mug1, mug1, mug1],
-  casserole: [cas1, cas1, cas1, cas1],
+  drinkware: ["2L", "3L", "5L"],
 };
 
 const categoryMap = {
-  drinkware: "bottle",
+  drinkware: "drink",
   bottle: "bottle",
   mug: "mug",
   pan: "pan",
@@ -56,6 +113,20 @@ const categoryMap = {
   storage: "storage",
   lunchkit: "lunch",
 };
+
+const thumbsByImg = {
+  bottle: [bottle1, bottle2, bottle3, bottle4],
+  pan: [pan1, pan2,pan3],
+  casserole : [cas1,cas2,cas3],
+  mug : [mug1,mug2,mug3],
+  tiffin : [tiffin1,tiffin2],
+  bowl : [bowl1,bowl2,bowl3],
+  storage : [store1,store2],
+  lunch : [Lunch1,Lunch2],
+drink: [drink1, drink2, drink3],
+};
+
+
 
 const Buy = () => {
   const { id } = useParams();
@@ -86,15 +157,14 @@ const Buy = () => {
   // --- current product ---
   const product = location.state || allProductsList.find((p) => p.id === parseInt(id));
 
-  // --- initialize states based on product safely ---
-  useEffect(() => {
-    if (product) {
-      const type = product.type || "bottle";
-      setActiveImg(location.state?.img || imgMap[product.img] || imgMap[type]);
-      setActiveSize(sizesByType[type]?.[0] || "");
-      setIsWishlisted(wishlist.some((item) => item.id === product.id));
-    }
-  }, [product, location.state, wishlist]);
+useEffect(() => {
+  const prod = allProductsList.find((p) => p.id === parseInt(id));
+  if (prod) {
+    setActiveSize(sizesByType[prod.type]?.[0] || "");
+    setActiveImg(imgMap[prod.img] || imgMap[prod.type]);
+    setIsWishlisted(wishlist.some((item) => item.id === prod.id));
+  }
+}, [id, allProductsList, wishlist]);
 
   // --- guards (conditional rendering) ---
   if (loading) return <p>Loading...</p>;
@@ -103,7 +173,14 @@ const Buy = () => {
 
   const productType = product.type || "bottle";
   const initialMainImg = location.state?.img || imgMap[productType];
-  const thumbs = thumbsByType[productType] || [initialMainImg];
+
+
+  const thumbs =
+  thumbsByImg[product.img] ||
+  thumbsByImg[categoryMap[product.type]] ||
+  [imgMap[product.img]];
+
+
 
   const productCategory = product?.type ? (categoryMap[product.type] || product.type).toLowerCase() : null;
 
@@ -116,7 +193,8 @@ const Buy = () => {
   const handleBuyNow = () => {
     addToCart({
       id: product.id,
-      img: product.img,
+      variantId: activeImg, 
+      img: activeImg, 
       title: product.title,
       type: product.type,
       price: Number(String(product.price).replace(/[^0-9.]/g, "")),
@@ -200,10 +278,11 @@ const Buy = () => {
     onClick={() =>
       addToCart({
   id: product.id,
-  img: product.img,
+  variantId: activeImg,
+  img: activeImg,
   title: product.title,
   type : product.type,
-    price: Number(String(product.price).replace(/[^0-9.]/g, "")),// NUMBER-a store panrom
+  price: Number(String(product.price).replace(/[^0-9.]/g, "")),
   size: activeSize,
   quantity: Number(quantity) || 1,
 })
@@ -389,7 +468,7 @@ const Buy = () => {
 <ProductCard
   key={p.id}
   id={p.id}
-img={imgMap[p.img] || p.img} 
+ img={imgMap[p.img] || imgMap[p.type]} 
   title={p.title}
   price={p.price}
   type={p.type}

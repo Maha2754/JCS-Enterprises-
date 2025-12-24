@@ -16,35 +16,37 @@ export const CartProvider = ({ children }) => {
   }, [cartItems]);
 
   // Add product to cart
-  const addToCart = (product) => {
-    setCartItems((prev) => {
-      const existingIndex = prev.findIndex(
-        (item) =>
-          item.id === product.id &&
-          (item.size || "default") === (product.size || "default")
-      );
+const addToCart = (product) => {
+  setCartItems((prev) => {
+    const existingIndex = prev.findIndex(
+      (item) =>
+        item.id === product.id &&
+        item.variantId === product.variantId && 
+        (item.size || "default") === (product.size || "default")
+    );
 
-      if (existingIndex >= 0) {
-        const updatedItems = [...prev];
-        updatedItems[existingIndex] = {
-          ...updatedItems[existingIndex],
-          quantity:
-            Number(updatedItems[existingIndex].quantity) +
-            Number(product.quantity || 1),
-        };
-        return updatedItems;
-      } else {
-        return [
-          ...prev,
-          {
-            ...product,
-            price: Number(product.price),
-            quantity: Number(product.quantity || 1),
-          },
-        ];
-      }
-    });
-  };
+    if (existingIndex >= 0) {
+      const updatedItems = [...prev];
+      updatedItems[existingIndex] = {
+        ...updatedItems[existingIndex],
+        quantity:
+          Number(updatedItems[existingIndex].quantity) +
+          Number(product.quantity || 1),
+      };
+      return updatedItems;
+    } else {
+      return [
+        ...prev,
+        {
+          ...product,
+          price: Number(product.price),
+          quantity: Number(product.quantity || 1),
+        },
+      ];
+    }
+  });
+};
+
 
   // Remove product from cart by index
   const removeFromCart = (index) => {

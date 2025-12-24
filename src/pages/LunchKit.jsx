@@ -7,7 +7,8 @@ import { Link } from "react-router-dom";
 import ProductCard from "../component/ProductCard";
 import FilterBar from "../component/FilterBar";
 
-import Lunch from "../assets/lunch.png";
+import Lunch1 from "../assets/lunch.png";
+import Lunch2 from "../assets/lunch2.png";
 
 
 /* pagination settings */
@@ -17,7 +18,8 @@ export default function LunchKit() {
   const { data, loading, error } = useFetch("/data/dummydata.json");
 
   const imageMap = {
-    lunch: Lunch,
+  lunch : Lunch1,
+  lunch1 : Lunch2,
   }
   const allProducts = data.filter(
     (item) => item.type === "lunchkit"
@@ -93,15 +95,21 @@ export default function LunchKit() {
 
         <div className="products-grid">
           {currentProducts.map((item) => (
-            <ProductCard
-              key={item.id}
-              id={item.id}
-              img={imageMap[item.img]}
-              title={item.title}
-              price={item.price}
-              oldPrice={item.oldPrice}
-              para={item.para}
-            />
+  <Link
+    to={`/buy/${item.id}`} 
+    state={item}             
+    key={item.id}
+    style={{ textDecoration: "none", color: "inherit" }} 
+  >
+    <ProductCard
+      id={item.id}
+      img={imageMap[item.img] || Lunch1} 
+      title={item.title}
+      price={item.price}
+      oldPrice={item.oldPrice}
+      para={item.para}
+    />
+  </Link>
           ))}
         </div>
 

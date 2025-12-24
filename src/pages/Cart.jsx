@@ -8,17 +8,44 @@ import casserole from "../assets/casserole.png";
 import mug from "../assets/mug.png";
 import { useNavigate } from "react-router-dom";
 import ProductCard from "../component/ProductCard";
+import useFetch from "../hooks/useFetch";
+
+import bowl from "../assets/bowl.png";
+import drink from "../assets/drink.png";
+import lunch from "../assets/lunch.png";
+import storage from "../assets/storage.png";
+import tiffin from "../assets/tiffin.png";
+
+const imageMap = {
+  pan,
+  bottle,
+  casserole,
+  mug,
+  bowl,
+  drink,
+  lunch,
+  storage,
+  tiffin,
+};
+
+
 
 const Cart = () => {
   const navigate = useNavigate();
   const { cartItems, removeFromCart, updateQuantity, addToCart } = useContext(CartContext);
+  const { data: allProducts } = useFetch("/data/dummydata.json");
+  const products = Array.isArray(allProducts) ? allProducts : [];
 
-  const frequentProducts = [
-    { id: 101, img: pan, title: "Steel Non-Stick Pan", para: "Best combo choice", price: 1000, oldPrice: 1400, rating: 4, reviews: 25 },
-    { id: 102, img: bottle, title: "Steel Bottle – 750ml", para: "Most bought together", price: 1000, oldPrice: 1400, rating: 5, reviews: 40 },
-    { id: 103, img: casserole, title: "Steel Casserole – 5L", para: "Perfect kitchen set", price: 1000, oldPrice: 1400, rating: 3, reviews: 18 },
-    { id: 104, img: mug, title: "Steel Mug – 200ml", para: "Popular add-on", price: 1000, oldPrice: 1400, rating: 4, reviews: 30 },
+  const cartTypes = [
+    ...new Set(cartItems.map(item => item.type).filter(Boolean))
   ];
+
+  const cartIds = cartItems.map(item => item.id);
+  const frequentProducts = products.filter(product =>
+    cartTypes.includes(product.type) && !cartIds.includes(product.id)
+  );
+  const limitedFrequent = frequentProducts.slice(0, 4);
+
 
   const handleIncrement = (index) => {
     updateQuantity(index, cartItems[index].quantity + 1);
@@ -28,14 +55,17 @@ const Cart = () => {
     updateQuantity(index, cartItems[index].quantity - 1);
   };
 
- const totalPrice = cartItems.reduce(
-  (acc, item) => acc + Number(item.price) * Number(item.quantity),
-  0
-);
+  const totalPrice = cartItems.reduce(
+    (acc, item) => acc + Number(item.price) * Number(item.quantity),
+    0
+  );
 
-  const formatPrice = (num) => `${num.toLocaleString()}`; // format price for display
+  const formatPrice = (num) => `${num.toLocaleString()}`;
 
-    console.log(cartItems);
+  console.log("Cart Items:", cartItems);
+
+  console.log("ALL PRODUCTS:", products);
+  console.log("CART TYPES:", cartTypes);
 
 
   return (
@@ -63,9 +93,9 @@ const Cart = () => {
                 <button onClick={() => handleIncrement(i)}>+</button>
               </div>
 
-             <div className="cart-amount">
-  {formatPrice(Number(item.price) * Number(item.quantity))}
-</div>
+              <div className="cart-amount">
+                {formatPrice(Number(item.price) * Number(item.quantity))}
+              </div>
 
               <div className="cart-remove">
                 <button onClick={() => removeFromCart(i)}>X</button>
@@ -78,33 +108,48 @@ const Cart = () => {
           <div className="cart-actions">
             <Link to="/" className="continue-shopping">← Continue Shopping</Link>
             <button className="checkout-btn" onClick={() => {
-  console.log("Checkout clicked");
-  navigate("/checkout");
-}}>CHECKOUT</button>
+              console.log("Checkout clicked");
+              navigate("/checkout");
+            }}>CHECKOUT</button>
           </div>
         </div>
       )}
 
-      {/* ================= FREQUENTLY BOUGHT TOGETHER ================= */}
+      {/*FREQUENTLY BOUGHT TOGETHER*/}
       <section className="products-section">
         <h2>Frequently Bought Together</h2>
-        <div className="products-grid">
-  {frequentProducts.map((item) => (
-    <ProductCard
-      key={item.id}
-      id={item.id}
-      img={item.img}
-      title={item.title}
-      price={`${item.price}`}
-      oldPrice={`${item.oldPrice}`}
-      para={item.para}
-      rating={item.rating}
-      reviews={item.reviews}
-    />
-  ))}
-</div>
 
+        {limitedFrequent.length === 0 ? (
+          <p style={{ textAlign: "center" }}>
+            Add products to cart to see recommendations
+          </p>
+        ) : (
+          <div className="products-grid">
+            {limitedFrequent.map((item) => (
+              <ProductCard
+                key={item.id}
+                id={item.id}
+                img={imageMap[item.type]}
+                title={item.title}
+                price={`${item.price}`}
+                oldPrice={`${item.oldPrice}`}
+                para={item.para}
+                type={item.type}
+                onAddToCart={() =>
+                  addToCart({
+                    id: item.id,
+                    img: imageMap[item.type],
+                    title: item.title,
+                    price: item.price,
+                    type: item.type,
+                  })
+                }
+              />
+            ))}
+          </div>
+        )}
       </section>
+
     </div>
 
 

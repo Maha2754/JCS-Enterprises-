@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import "../style/view.css";
-import { CartContext } from "../component/CartContext"; // import context
+import { CartContext } from "../component/CartContext";
 import { useNavigate } from "react-router-dom";
 import { WishlistContext } from "../component/WishlistContext";
 
@@ -15,16 +15,16 @@ const View = ({ onClose, product }) => {
   const [size, setSize] = useState("700ml");
   const [quantity, setQuantity] = useState(1);
 
-  // const [isWishlisted, setIsWishlisted] = useState(false);
 
   const handleAddToCart = () => {
     addToCart({
       id: product.id,
       img: product.img,
       title: product.title,
+      type: product.type,
       price: Number(
         String(product.price).replace(/[^0-9.]/g, "")
-      ), // ✅ REAL FIX
+      ),
       size: size,
       quantity: Number(quantity) || 1,
     });
@@ -38,7 +38,7 @@ const View = ({ onClose, product }) => {
       title: product.title,
       price: Number(
         String(product.price).replace(/[^0-9.]/g, "")
-      ), // ✅ REAL FIX
+      ),
       size: size,
       quantity: Number(quantity) || 1,
     });
@@ -59,7 +59,7 @@ const View = ({ onClose, product }) => {
     if (!isInWishlist) {
       addToWishlist(product);
     } else {
-      removeFromWishlist(product.id); // optional if you want toggle remove
+      removeFromWishlist(product.id);
     }
   };
 

@@ -19,25 +19,25 @@ const Navbar = () => {
 
   const location = useLocation();
   const hideMenu = [
-    "/bottles","/tiffins","/drinkware","/bowls","/storage","/lunch-kit","/festive","/cart","/buy",
+    "/bottles", "/tiffins", "/drinkware", "/bowls", "/storage", "/lunch-kit", "/festive", "/cart", "/buy",
   ].includes(location.pathname);
 
   const showBreadcrumb =
-  location.pathname === "/cart" ||
-  location.pathname.startsWith("/buy");
+    location.pathname === "/cart" ||
+    location.pathname.startsWith("/buy");
 
 
   const [userOpen, setUserOpen] = useState(false);
 
-const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem("user"));
 
-const handleLogout = () => {
-  localStorage.removeItem("isLoggedIn");
-  setUserOpen(false);
-  navigate("/login");
-};
+  const handleLogout = () => {
+    localStorage.removeItem("isLoggedIn");
+    setUserOpen(false);
+    navigate("/login");
+  };
 
-  
+
 
   return (
     <nav className="navbar">
@@ -49,20 +49,19 @@ const handleLogout = () => {
           {searchOpen && (
             <div className="search-dropdown">
               <input
-  type="text"
-  placeholder="Search products..."
-  value={searchTerm}
-  onChange={(e) => setSearchTerm(e.target.value)}
-  onKeyDown={(e) => {
-    if (e.key === "Enter") {
-      // Navigate to AllProducts page with search query
-      navigate(`/all-products?search=${encodeURIComponent(searchTerm)}`);
-      setSearchOpen(false); // close dropdown
-      setSearchTerm(""); // clear input
-    }
-  }}
-/>
-
+                type="text"
+                placeholder="Search products..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    // Navigate to AllProducts page with search query
+                    navigate(`/all-products?search=${encodeURIComponent(searchTerm)}`);
+                    setSearchOpen(false); // close dropdown
+                    setSearchTerm("");
+                  }
+                }}
+              />
             </div>
           )}
         </div>
@@ -73,44 +72,44 @@ const handleLogout = () => {
 
         <div className="nav-right">
 
-  {/* ❤️ Wishlist icon */}
-  <span className="icon wishlist-icon" onClick={() => navigate("/wishlist")}>
-    <i className="fa-regular fa-heart"></i>
-    {wishlist.length > 0 && (
-      <span className="wishlist-count">{wishlist.length}</span>
-    )}
-  </span>
-          
-  <div className="user-wrapper">
-   <span
-  className="icon track-order-icon"
-  onClick={() => navigate("/track-order")}
-  title="Track Order"
->
-  <i className="fa-solid fa-truck-fast"></i>
-</span>
-  <span
-    className="icon"
-    onClick={() => setUserOpen(!userOpen)}
-  >
-    <i className="fa-regular fa-user"></i>
-  </span>
+          {/* Wishlist icon */}
+          <span className="icon wishlist-icon" onClick={() => navigate("/wishlist")}>
+            <i className="fa-regular fa-heart"></i>
+            {wishlist.length > 0 && (
+              <span className="wishlist-count">{wishlist.length}</span>
+            )}
+          </span>
 
-  {userOpen && user && (
-    <div className="user-dropdown">
-      <p className="user-name">
-        {user.firstName} {user.lastName}
-      </p>
-      <p className="user-email">{user.email}</p>
-      <button onClick={handleLogout}>Logout</button>
-    </div>
-  )}
-</div>
+          <div className="user-wrapper">
+            <span
+              className="icon track-order-icon"
+              onClick={() => navigate("/track-order")}
+              title="Track Order"
+            >
+              <i className="fa-solid fa-truck-fast"></i>
+            </span>
+            <span
+              className="icon"
+              onClick={() => setUserOpen(!userOpen)}
+            >
+              <i className="fa-regular fa-user"></i>
+            </span>
 
-         <span className="icon cart-icon" onClick={() => navigate("/cart")}>
-  <i className="fa-solid fa-bag-shopping"></i>
-  {cartItems.length > 0 && <span className="cart-count">{cartItems.length}</span>}
-</span>
+            {userOpen && user && (
+              <div className="user-dropdown">
+                <p className="user-name">
+                  {user.firstName} {user.lastName}
+                </p>
+                <p className="user-email">{user.email}</p>
+                <button onClick={handleLogout}>Logout</button>
+              </div>
+            )}
+          </div>
+
+          <span className="icon cart-icon" onClick={() => navigate("/cart")}>
+            <i className="fa-solid fa-bag-shopping"></i>
+            {cartItems.length > 0 && <span className="cart-count">{cartItems.length}</span>}
+          </span>
 
           {!hideMenu && (
             <span className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>☰</span>
@@ -118,7 +117,7 @@ const handleLogout = () => {
         </div>
       </div>
 
-      
+
 
 
       {!hideMenu && (
@@ -133,12 +132,12 @@ const handleLogout = () => {
         </ul>
       )}
 
-       {/* Breadcrumb (menu replace) */}
-  {showBreadcrumb && (
-    <div className="breadcrumb-wrapper">
-      <Breadcrumb />
-    </div>
-  )}
+      {/* Breadcrumb (menu replace) */}
+      {showBreadcrumb && (
+        <div className="breadcrumb-wrapper">
+          <Breadcrumb />
+        </div>
+      )}
     </nav>
   );
 };

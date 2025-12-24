@@ -5,44 +5,44 @@ import Footer from "../../component/Footer";
 
 const Login = () => {
 
-  
+
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-useEffect(() => {
-  localStorage.setItem(
-    "user",
-    JSON.stringify({
-      email: "admin@gmail.com",
-      password: "123456",
-    })
-  );
-}, []);
+  useEffect(() => {
+    localStorage.setItem(
+      "user",
+      JSON.stringify({
+        email: "admin@gmail.com",
+        password: "123456",
+      })
+    );
+  }, []);
 
 
- const handleLogin = (e) => {
-  e.preventDefault();
+  const handleLogin = (e) => {
+    e.preventDefault();
 
-  const storedUser = JSON.parse(localStorage.getItem("user"));
+    const storedUser = JSON.parse(localStorage.getItem("user"));
 
-  if (!storedUser) {
-    alert("No user found. Please register first.");
-    navigate("/register");
-    return;
-  }
+    if (!storedUser) {
+      alert("No user found. Please register first.");
+      navigate("/register");
+      return;
+    }
 
-  if (
-    storedUser.email === email.trim() &&
-    storedUser.password === password.trim()
-  ) {
-    alert("Login Successful!");
-    localStorage.setItem("isLoggedIn", "true");
-    navigate("/");
-  } else {
-    alert("Invalid Credentials. Please try again or Register first.");
-  }
-};
+    if (
+      storedUser.email === email.trim() &&
+      storedUser.password === password.trim()
+    ) {
+      alert("Login Successful!");
+      localStorage.setItem("isLoggedIn", "true");
+      navigate("/");
+    } else {
+      alert("Invalid Credentials. Please try again or Register first.");
+    }
+  };
 
   return (
     <div className="login-page">

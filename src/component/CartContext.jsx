@@ -3,6 +3,7 @@ import React, { createContext, useState, useEffect } from "react";
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
+
   // Initialize cart from localStorage if exists
   const [cartItems, setCartItems] = useState(() => {
     const saved = localStorage.getItem("cartItems");
@@ -56,7 +57,7 @@ export const CartProvider = ({ children }) => {
       const updated = [...prev];
       updated[index] = {
         ...updated[index],
-        quantity: qty < 1 ? 1 : qty, // prevent quantity < 1
+        quantity: qty < 1 ? 1 : qty,
       };
       return updated;
     });

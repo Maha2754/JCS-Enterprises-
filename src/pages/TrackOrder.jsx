@@ -51,9 +51,9 @@ const TrackOrder = () => {
           { img: Lunch, name: "Lunch Box", qty: 2, price: 799 },
         ],
       });
-      openModal(); // ✅ open modal and hide navbar
+      openModal();
     } else {
-      closeModal(); // ✅ hide modal & ensure navbar shows
+      closeModal();
       setError("Order not found. Please check your details.");
     }
   };
@@ -92,38 +92,36 @@ const TrackOrder = () => {
             <p>Expected Delivery: {orderDetails.expectedDelivery}</p>
 
             {/* Shipment Tracker */}
-           {/* Shipment Tracker */}
-<div className="tracker">
-  {orderDetails.statusSteps?.map((step, index) => (
-    <div className="tracker-step" key={index}>
-      <div
-        className={`tracker-dot ${step.completed ? "completed" : ""}`}
-        title={`${step.step} - ${step.date}`}
-      ></div>
-      {index !== orderDetails.statusSteps.length - 1 && (
-        <div
-          className={`tracker-line ${
-            step.completed ? "completed" : ""
-          }`}
-        ></div>
-      )}
-      <span className="tracker-label">{step.step}</span>
-    </div>
-  ))}
+            {/* Shipment Tracker */}
+            <div className="tracker">
+              {orderDetails.statusSteps?.map((step, index) => (
+                <div className="tracker-step" key={index}>
+                  <div
+                    className={`tracker-dot ${step.completed ? "completed" : ""}`}
+                    title={`${step.step} - ${step.date}`}
+                  ></div>
+                  {index !== orderDetails.statusSteps.length - 1 && (
+                    <div
+                      className={`tracker-line ${step.completed ? "completed" : ""
+                        }`}
+                    ></div>
+                  )}
+                  <span className="tracker-label">{step.step}</span>
+                </div>
+              ))}
 
-  {/* Truck */}
-  <div
-    className="truck"
-    style={{
-      left: `${
-        (orderDetails.statusSteps.filter((s) => s.completed).length - 1) *
-        25
-      }%`,
-    }}
-  >
-    🚚
-  </div>
-</div>
+              {/* Truck */}
+              <div
+                className="truck"
+                style={{
+                  left: `${(orderDetails.statusSteps.filter((s) => s.completed).length - 1) *
+                    25
+                    }%`,
+                }}
+              >
+                🚚
+              </div>
+            </div>
 
 
             {/* Items */}

@@ -1,65 +1,66 @@
 import React, { useContext, useState } from "react";
 import { CartContext } from "../component/CartContext";
 import "../style/productcard.css";
-import View from "../component/View"; // 🔥 modal component
+import View from "../component/View";
 import { useNavigate } from "react-router-dom";
 import { WishlistContext } from "../component/WishlistContext";
 
 
 const ProductCard = ({ id, img, title, price, type, oldPrice, para, rating = 5, reviews = 20 }) => {
   const { addToCart } = useContext(CartContext);
-  const [isViewOpen, setIsViewOpen] = useState(false); // modal state
-   const [liked, setLiked] = useState(false);
+  const [isViewOpen, setIsViewOpen] = useState(false);
+  const [liked, setLiked] = useState(false);
 
-   const { addToWishlist, removeFromWishlist, wishlist } = useContext(WishlistContext);
+  const { addToWishlist, removeFromWishlist, wishlist } = useContext(WishlistContext);
 
-const isWishlisted = wishlist.some(item => item.id === id);
+  const isWishlisted = wishlist.some(item => item.id === id);
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+
 
   return (
     <>
       <div className="product-card">
         {/* Image */}
-         <div
+        <div
           className="product-img-box"
           onClick={() =>
-  navigate(`/buy/${id}`, {
-    state: {
-      id,
-      img,
-      title,
-      price,
-      oldPrice,
-      type,
-      para
-    }
-  })
-}
-   // 🔥 IMAGE CLICK → BUY PAGE
+            navigate(`/buy/${id}`, {
+              state: {
+                id,
+                img,
+                title,
+                price,
+                oldPrice,
+                type,
+                para
+              }
+            })
+          }
+        //  IMAGE CLICK → BUY PAGE
         >
           <img src={img} alt={title} />
-<span
-  className={`productcard-wishlist-btn ${isWishlisted ? "active" : ""}`}
-  onClick={(e) => {
-    e.stopPropagation();
+          <span
+            className={`productcard-wishlist-btn ${isWishlisted ? "active" : ""}`}
+            onClick={(e) => {
+              e.stopPropagation();
 
-    if (isWishlisted) {
-      removeFromWishlist(id);
-    } else {
-      addToWishlist({ id, img, title, price, oldPrice, type, para });
-    }
-  }}
->
-  <i className="fa-solid fa-heart"></i>
-</span>
+              if (isWishlisted) {
+                removeFromWishlist(id);
+              } else {
+                addToWishlist({ id, img, title, price, oldPrice, type, para });
+              }
+            }}
+          >
+            <i className="fa-solid fa-heart"></i>
+          </span>
 
 
           <span
             className="view-btn"
             onClick={(e) => {
-              e.stopPropagation(); // prevent parent click
-              setIsViewOpen(true); // open modal
+              e.stopPropagation();
+              setIsViewOpen(true);
             }}
           >
             View
@@ -81,33 +82,34 @@ const isWishlisted = wishlist.some(item => item.id === id);
 
           {/* Price */}
           <div className="price-action">
-          <div className="price">
-            <span className="new">₹{price}</span>
-            {oldPrice && <span className="old">₹{oldPrice}</span>}
-          </div>
+            <div className="price">
+              <span className="new">₹{price}</span>
+              {oldPrice && <span className="old">₹{oldPrice}</span>}
+            </div>
 
-          {/* Add to Cart */}
-          <div className="action-row">
-            <button
-              className="add-btn"
-              onClick={(e) => {
-                e.stopPropagation();
-                addToCart({
-                  id,
-                  img,
-                  title,
-                  price: Number(String(price).replace(/₹|,/g, "")),
-                  quantity: 1
-                });
-              }}
-            >
-              Add
-            </button>
+            {/* Add to Cart */}
+            <div className="action-row">
+              <button
+                className="add-btn"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  addToCart({
+                    id,
+                    img,
+                    title,
+                    type,
+                    price: Number(String(price).replace(/₹|,/g, "")),
+                    quantity: 1,
+                  });
+                }}
+              >
+                Add
+              </button>
+            </div>
           </div>
         </div>
-      </div>
 
-</div>
+      </div>
       {/* View Modal */}
       {isViewOpen && <View onClose={() => setIsViewOpen(false)} product={{ id, img, title, price, oldPrice, type, para }} />}
     </>

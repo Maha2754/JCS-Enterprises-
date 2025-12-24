@@ -3,13 +3,13 @@ import "../style/filterbar.css";
 
 const FilterBar = ({ onFilterChange, onSortChange }) => {
   const [showFilter, setShowFilter] = useState(false);
-  const [activeMenu, setActiveMenu] = useState(null); // size | litre
+  const [activeMenu, setActiveMenu] = useState(null);
   const [showSort, setShowSort] = useState(false);
 
   return (
     <>
       <section className="filter-bar">
-        {/* LEFT */}
+        {/* LEFT */}  
         <div
           className="filter-left"
           onClick={() => setShowFilter(!showFilter)}
@@ -35,7 +35,7 @@ const FilterBar = ({ onFilterChange, onSortChange }) => {
         </div>
       </section>
 
-      {/* 🔽 FILTER TOGGLE MENU */}
+      {/* FILTER TOGGLE MENU */}
       {showFilter && (
         <div className="filter-toggle">
           {!activeMenu && (
@@ -73,7 +73,7 @@ const FilterBar = ({ onFilterChange, onSortChange }) => {
         </div>
       )}
 
-      {/* 🔽 SORT MENU */}
+      {/* SORT MENU */}
       {showSort && (
         <div className="sort-toggle">
           <div onClick={() => onSortChange("low-high")}>Price: Low → High</div>

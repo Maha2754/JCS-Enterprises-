@@ -8,7 +8,7 @@ const Payment = () => {
 
   const handlePay = () => {
     if (!selectedPayment) {
-      alert("Please select a payment method"); // must select
+      alert("Please select a payment method");
       return;
     }
     navigate("/success");

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { WishlistContext } from "../component/WishlistContext";
 import ProductCard from "../component/ProductCard";
-import "../style/wishlist.css"; // MUST
+import "../style/wishlist.css";
 
 const Wishlist = () => {
   const { wishlist } = useContext(WishlistContext);

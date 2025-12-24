@@ -5,8 +5,8 @@ const Address = () => {
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
-    e.preventDefault();   // page reload stop
-    navigate("/payment"); // only after validation
+    e.preventDefault();
+    navigate("/payment");
   };
 
   return (

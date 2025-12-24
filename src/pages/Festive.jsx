@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import useFetch from "../hooks/useFetch";
 import "../style/festive.css";
 import bannerImage from "../assets/banners/banner.png";
 import { Link } from "react-router-dom";
@@ -9,35 +10,37 @@ import pan from "../assets/pan1.png";
 import Bottle from "../assets/bottle.png";
 import Bowl from "../assets/bowl.png";
 import Drink from "../assets/drink.png";
+import casserole from "../assets/casserole.png";
+import mug from "../assets/mug.png";
+import store from "../assets/storage.png";
+import tiffin from "../assets/tiffin.png";
+import Lunch from "../assets/lunch.png";
 
-const allProducts = [
-  { id: 1, img: pan, title: "Steel Bottle 500ml", price: "1000", oldPrice: "1200", para: "Best Selling Product" },
-  { id: 2, img: pan, title: "Steel Bottle 750ml", price: "1200", oldPrice: "1500", para: "Best Selling Product" },
-  { id: 3, img: pan, title: "Steel Bottle 1000ml", price: "1400", oldPrice: "1700", para: "Best Selling Product" },
-  { id: 4, img: pan, title: "Steel Bottle 500ml", price: "1000", oldPrice: "1200", para: "Best Selling Product" },
-  { id: 5, img: pan, title: "Steel Bottle 750ml", price: "1200", oldPrice: "1500", para: "Best Selling Product" },
-  { id: 6, img: pan, title: "Steel Bottle 1000ml", price: "1400", oldPrice: "1700", para: "Best Selling Product" },
-  { id: 7, img: Bottle, title: "Steel Bottle 500ml", price: "1000", oldPrice: "1200", para: "Best Selling Product" },
-  { id: 8, img: Bottle, title: "Steel Bottle 750ml", price: "1200", oldPrice: "1500", para: "Best Selling Product" },
-  { id: 9, img: Bottle, title: "Steel Bottle 1000ml", price: "1400", oldPrice: "1700", para: "Best Selling Product" },
-  { id: 10, img: Bottle, title: "Steel Bottle 500ml", price: "1000", oldPrice: "1200", para: "Best Selling Product" },
-  { id: 11, img: Bottle, title: "Steel Bottle 750ml", price: "1200", oldPrice: "1500", para: "Best Selling Product" },
-  { id: 12, img: Bottle, title: "Steel Bottle 1000ml", price: "1400", oldPrice: "1700", para: "Best Selling Product" },
-  { id: 13, img: Bowl, title: "Steel Bottle 500ml", price: "1000", oldPrice: "1200", para: "Best Selling Product" },
-  { id: 14, img: Bowl, title: "Steel Bottle 750ml", price: "1200", oldPrice: "1500", para: "Best Selling Product" },
-  { id: 15, img: Bowl, title: "Steel Bottle 1000ml", price: "1400", oldPrice: "1700", para: "Best Selling Product" },
-  { id: 16, img: Bowl, title: "Steel Bottle 500ml", price: "1000", oldPrice: "1200", para: "Best Selling Product" },
-  { id: 17, img: Bowl, title: "Steel Bottle 750ml", price: "1200", oldPrice: "1500", para: "Best Selling Product" },
-  { id: 18, img: Drink, title: "Steel Bottle 1000ml", price: "1400", oldPrice: "1700", para: "Best Selling Product" },
-  { id: 19, img: Drink, title: "Steel Bottle 500ml", price: "1000", oldPrice: "1200", para: "Best Selling Product" },
-  { id: 20, img: Drink, title: "Steel Bottle 750ml", price: "1200", oldPrice: "1500", para: "Best Selling Product" },
-];
 
-/* 🔹 pagination settings */
+
+/*  pagination settings */
 const ITEMS_PER_PAGE = 16;
 
 export default function Festive() {
 
+
+  const { data, loading, error } = useFetch("/data/dummydata.json");
+
+  const imageMap = {
+    pan: pan,
+    bottle: Bottle,
+    bowl: Bowl,
+    drink: Drink,
+    mug: mug,
+    casserole: casserole,
+    lunch: Lunch,
+    storage: store,
+    tiffin: tiffin,
+  };
+
+  const allProducts = data.filter(
+    (item) => item.isFestive === true
+  );
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -50,31 +53,22 @@ export default function Festive() {
   const getFilteredProducts = () => {
     let products = [...allProducts];
 
-    // 🔹 FILTER
     if (selectedSize) {
       products = products.filter(item =>
         item.title.toLowerCase().includes(selectedSize.toLowerCase())
       );
     }
 
-    // 🔹 SORT
     if (sortType === "low-high") {
-      products.sort(
-        (a, b) => Number(a.price.replace("", "")) - Number(b.price.replace("", ""))
-      );
+      products.sort((a, b) => Number(a.price) - Number(b.price));
     }
+
     if (sortType === "high-low") {
-      products.sort(
-        (a, b) => Number(b.price.replace("", "")) - Number(a.price.replace("", ""))
-      );
+      products.sort((a, b) => Number(b.price) - Number(a.price));
     }
 
     return products;
   };
-
-
-
-
 
   const filteredProducts = getFilteredProducts();
 
@@ -107,25 +101,28 @@ export default function Festive() {
         }}
         onSortChange={(type) => {
           setSortType(type);
-          setCurrentPage(1); //  essential
+          setCurrentPage(1);
         }}
       />
 
       <section className="products-section" id="shop">
+        {loading && <p>Loading festive offers...</p>}
+        {error && <p>Failed to load festive products</p>}
+
         <div className="products-grid">
           {currentProducts.map((item) => (
             <ProductCard
               key={item.id}
               id={item.id}
-              img={item.img}
+              img={imageMap[item.img]}
               title={item.title}
               price={item.price}
               oldPrice={item.oldPrice}
               para={item.para}
-
             />
           ))}
         </div>
+
         <div className="pagination">
           {[...Array(totalPages)].map((_, i) => (
             <span

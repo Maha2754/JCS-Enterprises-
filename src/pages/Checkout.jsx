@@ -19,20 +19,20 @@ const Checkout = () => {
 
 
   const applyCoupon = () => {
-  if (!coupon) {
-    setCouponError("Please enter a coupon code");
-    return;
-  }
+    if (!coupon) {
+      setCouponError("Please enter a coupon code");
+      return;
+    }
 
-  setCouponError("");
-  setLoading(true);
+    setCouponError("");
+    setLoading(true);
 
-  setTimeout(() => {
-    setDiscount(subtotal * 0.1); // 10% discount
-    setIsCouponApplied(true);    // ✅ coupon applied
-    setLoading(false);
-  }, 1000);
-};
+    setTimeout(() => {
+      setDiscount(subtotal * 0.1); // 10% discount
+      setIsCouponApplied(true);    
+      setLoading(false);
+    }, 1000);
+  };
 
   const sgst = subtotal * 0.1;
   const cgst = subtotal * 0.1;
@@ -106,9 +106,9 @@ const Checkout = () => {
             placeholder="Enter Coupon"
             value={coupon}
             onChange={(e) => {
-  setCoupon(e.target.value);
-  setIsCouponApplied(false); // reset flag if user edits
-}}
+              setCoupon(e.target.value);
+              setIsCouponApplied(false);
+            }}
 
             required
           />
@@ -120,18 +120,18 @@ const Checkout = () => {
         {couponError && <p className="error">{couponError}</p>}
 
         <button
-  className="final-checkout"
-  disabled={cartItems.length === 0}
-  onClick={() => {
-    if (!isCouponApplied) {
-      setCouponError("Please apply coupon to continue checkout");
-      return;
-    }
-    navigate("/address");
-  }}
->
-  Checkout
-</button>
+          className="final-checkout"
+          disabled={cartItems.length === 0}
+          onClick={() => {
+            if (!isCouponApplied) {
+              setCouponError("Please apply coupon to continue checkout");
+              return;
+            }
+            navigate("/address");
+          }}
+        >
+          Checkout
+        </button>
 
       </div>
     </div>

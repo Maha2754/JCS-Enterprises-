@@ -1,0 +1,251 @@
+[
+  {
+    "id": 1,
+    "type": "pan",
+    "title": "Steel Non-Stick Pan with Clean look",
+    "para": "Best Selling - 300+ Bought last Month",
+    "price": "1,000",
+    "oldPrice": "1,400",
+    "img": "pan"
+  },
+  {
+    "id": 2,
+    "type": "bottle",
+    "title": "Steel Bottle – 750ml",
+    "para": "Best Selling - 300+ Bought last Month",
+    "price": "1,000",
+    "oldPrice": "1,400",
+    "img": "bottle"
+  },
+  {
+    "id": 3,
+    "type": "mug",
+    "title": "Steel Mug with Double Layer – 200ml",
+    "para": "Best Selling - 300+ Bought last Month",
+    "price": "1,000",
+    "oldPrice": "1,400",
+    "img": "mug",
+    "isFestive": true
+
+  },
+  {
+    "id": 4,
+    "type": "casserole",
+    "title": "Steel Casserole – 5 Litres",
+    "para": "Best Selling - 300+ Bought last Month",
+    "price": "1,000",
+    "oldPrice": "1,400",
+    "img": "casserole",
+    "isFestive": true
+
+  },
+   {
+    "id": 5,
+    "type": "bottle",
+    "title": "Steel Bottle – 750ml",
+    "para": "Best Selling - 300+ Bought last Month",
+    "price": "999",
+    "oldPrice": "1,400",
+    "img": "bottle"
+  },
+    {
+    "id": 6,
+    "type": "bowl",
+    "title": "Steel Bowl 500ml",
+    "price": "1000",
+    "oldPrice": "1200",
+    "para": "Best Selling Product",
+    "img": "bowl"
+  },
+  {
+    "id": 7,
+    "type": "bowl",
+    "title": "Steel Bowl 750ml",
+    "price": "1200",
+    "oldPrice": "1500",
+    "para": "Best Selling Product",
+    "img": "bowl"
+  },
+  {
+    "id": 8,
+    "type": "bottle",
+    "title": "Steel Bottle 750ml",
+    "price": "1200",
+    "oldPrice": "1500",
+    "para": "Best Selling Product",
+    "img": "bottle"
+  },
+    {
+    "id": 9,
+    "type": "drinkware",
+    "title": "DrinkWare 500ml",
+    "price": "1000",
+    "oldPrice": "1200",
+    "para": "Best Selling Product",
+    "img": "drink"
+  },
+  {
+    "id": 10,
+    "type": "drinkware",
+    "title": "DrinkWare 750ml",
+    "price": "1200",
+    "oldPrice": "1500",
+    "para": "Best Selling Product",
+    "img": "drink",
+    "isFestive": true
+
+  },
+  {
+    "id": 11,
+    "type": "bowl",
+    "title": "Steel Bowl 750ml",
+    "price": "1200",
+    "oldPrice": "1500",
+    "para": "Best Selling Product",
+    "img": "bowl"
+  },
+    {
+    "id": 12,
+    "type": "pan1",
+    "title": "Steel Pan Combo Offer",
+    "price": "2500",
+    "oldPrice": "3200",
+    "para": "Festive Special Combo",
+    "img": "pan1",
+    "isFestive": true
+  },
+  {
+    "id": 13,
+    "type": "bottle",
+    "title": "Steel Bottle Festive Pack",
+    "price": "1800",
+    "oldPrice": "2300",
+    "para": "Diwali Special Offer",
+    "img": "bottle",
+    "isFestive": true
+  },
+  {
+    "id": 14,
+    "type": "bowl",
+    "title": "Steel Bowl Set",
+    "price": "1600",
+    "oldPrice": "2000",
+    "para": "Festive Discount",
+    "img": "bowl",
+    "isFestive": true
+  },
+  {
+    "id": 15,
+    "type": "drinkware",
+    "title": "Drinkware Set",
+    "price": "1400",
+    "oldPrice": "1800",
+    "para": "Regular Product",
+    "img": "drink",
+    "isFestive": false
+  },
+    {
+    "id": 16,
+    "type": "lunchkit",
+    "title": "Lunchkit set",
+    "price": "1400",
+    "oldPrice": "1800",
+    "para": "Regular Product",
+    "img": "lunch",
+    "isFestive": true
+  },
+      {
+    "id": 17,
+    "type": "storage",
+    "title": "Storage Set",
+    "price": "1400",
+    "oldPrice": "1800",
+    "para": "Regular Product",
+    "img": "storage",
+    "isFestive": true
+  },
+      {
+    "id": 18,
+    "type": "tiffin",
+    "title": "Tiffin Set",
+    "price": "1400",
+    "oldPrice": "1800",
+    "para": "Regular Product",
+    "img": "tiffin",
+    "isFestive": true
+  },
+      {
+    "id": 19,
+    "type": "tiffin",
+    "title": "Tiffin Set",
+    "price": "1400",
+    "oldPrice": "1800",
+    "para": "Regular Product",
+    "img": "tiffin",
+    "isFestive": false
+  },
+    {
+    "id": 20,
+    "type": "casserole",
+    "title": "Steel Casserole – 5 Litres",
+    "para": "Best Selling - 300+ Bought last Month",
+    "price": "1,000",
+    "oldPrice": "1,400",
+    "img": "casserole",
+    "isFestive": true
+
+  },
+    {
+    "id": 21,
+    "type": "casserole",
+    "title": "Steel Casserole – 5 Litres",
+    "para": "Best Selling - 300+ Bought last Month",
+    "price": "1,000",
+    "oldPrice": "1,400",
+    "img": "casserole",
+    "isFestive": true
+
+  },
+    {
+    "id": 22,
+    "type": "mug",
+    "title": "Steel Mug with Double Layer – 200ml",
+    "para": "Best Selling - 300+ Bought last Month",
+    "price": "1,000",
+    "oldPrice": "1,400",
+    "img": "mug",
+    "isFestive": true
+
+  },  {
+    "id": 23,
+    "type": "mug",
+    "title": "Steel Mug with Double Layer – 200ml",
+    "para": "Best Selling - 300+ Bought last Month",
+    "price": "1,000",
+    "oldPrice": "1,400",
+    "img": "mug",
+    "isFestive": true
+
+  },
+      {
+    "id": 24,
+    "type": "pan",
+    "title": "Steel Pan Combo Offer",
+    "price": "2000",
+    "oldPrice": "3000",
+    "para": "Festive Special Combo",
+    "img": "pan",
+    "isFestive": true
+  },
+      {
+    "id": 25,
+    "type": "pan",
+    "title": "Steel Pan Combo Offer",
+    "price": "2500",
+    "oldPrice": "3200",
+    "para": "Festive Special Combo",
+    "img": "pan",
+    "isFestive": true
+  }
+  
+]

@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import useFetch from "../hooks/useFetch";
+
 import "../style/tiffin.css";
 import bannerImage from "../assets/banners/banner.png";
 import { Link } from "react-router-dom";
@@ -8,33 +10,19 @@ import FilterBar from "../component/FilterBar";
 import tiffin from "../assets/tiffin.png";
 
 
-const allProducts = [
-  { id: 1, img: tiffin, title: "Steel Bottle 500ml", price: "1000", oldPrice: "1200", para: "Best Selling Product" },
-  { id: 2, img: tiffin, title: "Steel Bottle 750ml", price: "1200", oldPrice: "1500", para: "Best Selling Product" },
-  { id: 3, img: tiffin, title: "Steel Bottle 1000ml", price: "1400", oldPrice: "1700", para: "Best Selling Product" },
-  { id: 4, img: tiffin, title: "Steel Bottle 500ml", price: "1000", oldPrice: "1200", para: "Best Selling Product" },
-  { id: 5, img: tiffin, title: "Steel Bottle 750ml", price: "1200", oldPrice: "1500", para: "Best Selling Product" },
-  { id: 6, img: tiffin, title: "Steel Bottle 1000ml", price: "1400", oldPrice: "1700", para: "Best Selling Product" },
-  { id: 7, img: tiffin, title: "Steel Bottle 500ml", price: "1000", oldPrice: "1200", para: "Best Selling Product" },
-  { id: 8, img: tiffin, title: "Steel Bottle 750ml", price: "1200", oldPrice: "1500", para: "Best Selling Product" },
-  { id: 9, img: tiffin, title: "Steel Bottle 1000ml", price: "1400", oldPrice: "1700", para: "Best Selling Product" },
-  { id: 10, img: tiffin, title: "Steel Bottle 500ml", price: "1000", oldPrice: "1200", para: "Best Selling Product" },
-  { id: 11, img: tiffin, title: "Steel Bottle 750ml", price: "1200", oldPrice: "1500", para: "Best Selling Product" },
-  { id: 12, img: tiffin, title: "Steel Bottle 1000ml", price: "1400", oldPrice: "1700", para: "Best Selling Product" },
-  { id: 13, img: tiffin, title: "Steel Bottle 500ml", price: "1000", oldPrice: "1200", para: "Best Selling Product" },
-  { id: 14, img: tiffin, title: "Steel Bottle 750ml", price: "1200", oldPrice: "1500", para: "Best Selling Product" },
-  { id: 15, img: tiffin, title: "Steel Bottle 1000ml", price: "1400", oldPrice: "1700", para: "Best Selling Product" },
-  { id: 16, img: tiffin, title: "Steel Bottle 500ml", price: "1000", oldPrice: "1200", para: "Best Selling Product" },
-  { id: 17, img: tiffin, title: "Steel Bottle 750ml", price: "1200", oldPrice: "1500", para: "Best Selling Product" },
-  { id: 18, img: tiffin, title: "Steel Bottle 1000ml", price: "1400", oldPrice: "1700", para: "Best Selling Product" },
-  { id: 19, img: tiffin, title: "Steel Bottle 500ml", price: "1000", oldPrice: "1200", para: "Best Selling Product" },
-  { id: 20, img: tiffin, title: "Steel Bottle 750ml", price: "1200", oldPrice: "1500", para: "Best Selling Product" },
-];
-
 /*  pagination settings */
 const ITEMS_PER_PAGE = 16;
 
 export default function Tiffin() {
+
+  const { data, loading, error } = useFetch("/data/dummydata.json");
+
+  const imageMap = {
+    tiffin: tiffin,
+  }
+  const allProducts = data.filter(
+    (item) => item.type === "tiffin"
+  );
   const [currentPage, setCurrentPage] = useState(1);
 
 
@@ -47,30 +35,22 @@ export default function Tiffin() {
   const getFilteredProducts = () => {
     let products = [...allProducts];
 
-    // 🔹 FILTER
     if (selectedSize) {
       products = products.filter(item =>
         item.title.toLowerCase().includes(selectedSize.toLowerCase())
       );
     }
 
-    // 🔹 SORT
     if (sortType === "low-high") {
-      products.sort(
-        (a, b) => Number(a.price.replace("", "")) - Number(b.price.replace("", ""))
-      );
+      products.sort((a, b) => Number(a.price) - Number(b.price));
     }
+
     if (sortType === "high-low") {
-      products.sort(
-        (a, b) => Number(b.price.replace("", "")) - Number(a.price.replace("", ""))
-      );
+      products.sort((a, b) => Number(b.price) - Number(a.price));
     }
 
     return products;
   };
-
-
-
 
 
   const filteredProducts = getFilteredProducts();
@@ -106,23 +86,25 @@ export default function Tiffin() {
         }}
         onSortChange={(type) => {
           setSortType(type);
-          setCurrentPage(1); //  essential
+          setCurrentPage(1);
         }}
       />
 
       {/* PRODUCTS */}
       <section className="products-section" id="box">
+        {loading && <p>Loading...</p>}
+        {error && <p>Error loading products</p>}
+
         <div className="products-grid">
           {currentProducts.map((item) => (
             <ProductCard
               key={item.id}
               id={item.id}
-              img={item.img}
+              img={imageMap[item.img]}
               title={item.title}
               price={item.price}
               oldPrice={item.oldPrice}
               para={item.para}
-
             />
           ))}
         </div>

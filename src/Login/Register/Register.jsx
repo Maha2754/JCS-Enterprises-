@@ -11,19 +11,19 @@ const Register = () => {
   const [password, setPassword] = useState("");
 
   const handleRegister = (e) => {
-  e.preventDefault();
-   if (!firstName || !email || !password) {
+    e.preventDefault();
+    if (!firstName || !email || !password) {
       alert("Please fill all fields");
       return;
     }
 
-  // Save user to localStorage
-  const user = { firstName, lastName, email, password };
-  localStorage.setItem("user", JSON.stringify(user));
+    // Save user to localStorage
+    const user = { firstName, lastName, email, password };
+    localStorage.setItem("user", JSON.stringify(user));
 
-  alert("Registration Successful!");
-  navigate("/login"); // Redirect to Login page after register
-};
+    alert("Registration Successful!");
+    navigate("/login");
+  };
 
 
 
@@ -44,7 +44,7 @@ const Register = () => {
             required
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
-           
+
           />
           <input
             type="text"
@@ -52,7 +52,7 @@ const Register = () => {
             required
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
-            
+
           />
           <input
             type="email"
@@ -60,7 +60,7 @@ const Register = () => {
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-           
+
           />
           <input
             type="password"
@@ -68,7 +68,7 @@ const Register = () => {
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-           
+
           />
           <button type="submit">Create</button>
         </form>

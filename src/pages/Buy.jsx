@@ -1,152 +1,165 @@
 import React, { useState, useEffect, useContext } from "react";
 import "../style/buy.css";
+import useFetch from "../hooks/useFetch";
 
 // images
 import pan1 from "../assets/steel-pan.png";
 import pan2 from "../assets/pan1.png";
-
 import bottle1 from "../assets/bottle.png";
-import bottle2 from "../assets/bottle.png";
-
 import mug1 from "../assets/mug.png";
-import mug2 from "../assets/mug.png";
-
 import cas1 from "../assets/casserole.png";
-import cas2 from "../assets/casserole.png";
+import Bowl from "../assets/bowl.png";
+import Drink from "../assets/drink.png";
+import tiffin from "../assets/tiffin.png";
+import Lunch from "../assets/lunch.png";
+import store from "../assets/storage.png";
 
 import { useParams, useNavigate, useLocation } from "react-router-dom";
-
 import { CartContext } from "../component/CartContext";
 import ProductCard from "../component/ProductCard";
-
 import { WishlistContext } from "../component/WishlistContext";
 
-// CENTRAL PRODUCT LIST
-const allProducts = [
-  { id: 1, type: "pan", title: "Steel Pan", img: pan1, price: 999 },
-  { id: 2, type: "bottle", title: "Steel Bottle", img: bottle1, price: 999 },
-  { id: 3, type: "mug", title: "Steel Mug", img: mug1, price: 999 },
-  { id: 4, type: "casserole", title: "Steel Casserole", img: cas1, price: 999 },
-];
+const imgMap = {
+  pan: pan1,
+  bottle: bottle1,
+  mug: mug1,
+  casserole: cas1,
+  bowl: Bowl,
+  drink: Drink,
+  tiffin: tiffin,
+  storage: store,
+  lunch: Lunch,
+};
+
+const sizesByType = {
+  pan: ["Small", "Medium", "Large"],
+  bottle: ["500ml", "750ml", "1000ml"],
+  mug: ["150ml", "200ml", "300ml"],
+  casserole: ["2L", "3L", "5L"],
+};
+
+const thumbsByType = {
+  pan: [pan1, pan2, pan1, pan2],
+  bottle: [bottle1, bottle1, bottle1, bottle1],
+  mug: [mug1, mug1, mug1, mug1],
+  casserole: [cas1, cas1, cas1, cas1],
+};
+
+const categoryMap = {
+  drinkware: "bottle",
+  bottle: "bottle",
+  mug: "mug",
+  pan: "pan",
+  casserole: "casserole",
+  bowl: "bowl",
+  tiffin: "tiffin",
+  storage: "storage",
+  lunchkit: "lunch",
+};
 
 const Buy = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
   const location = useLocation();
+  const navigate = useNavigate();
 
   const { addToCart } = useContext(CartContext);
-const { addToWishlist, removeFromWishlist, wishlist } = useContext(WishlistContext);
+  const { addToWishlist, removeFromWishlist, wishlist } = useContext(WishlistContext);
 
+  // --- fetch products ---
+  const { data: products, loading, error } = useFetch("/data/dummydata.json");
+  const [allProductsList, setAllProductsList] = useState([]);
 
-
-
-  // FIND PRODUCT BY ID
-  // const product = allProducts.find((p) => p.id === parseInt(id));
-const product =
-  location.state ||
-  allProducts.find((p) => p.id === parseInt(id));
-
-  const productType = product?.type || "bottle";
-
-
-
-  // redirect if product not found
-  useEffect(() => {
-    if (!product) navigate("/");
-  }, [product, navigate]);
-
-  if (!product) return null;
-  //thumbs
-    const thumbsByType = {
-    pan: [pan1, pan2,pan1,pan2],
-    bottle: [bottle1, bottle2,bottle1,bottle2],
-    mug: [mug1, mug2,mug1,mug2],
-    casserole: [cas1, cas2,cas1,cas2],
-  };
-
-const thumbs =
-  location.state?.img
-    ? [location.state.img]
-    : thumbsByType[productType] || [product.img];
-
- 
-const [activeImg, setActiveImg] = useState(product.img);
-
-
+  // --- hooks at top level ---
   const [activeTab, setActiveTab] = useState("description");
-  const sizesByType = {
-    pan: ["Small", "Medium", "Large"],
-    bottle: ["500ml", "750ml", "1000ml"],
-    mug: ["150ml", "200ml", "300ml"],
-    casserole: ["2L", "3L", "5L"],
-  };
- const [activeSize, setActiveSize] = useState(
-  sizesByType[productType]?.[0] || ""
-);
-
-useEffect(() => {
-  setActiveImg(location.state?.img || product.img);
-}, [id, product.img, location.state]);
-
-
+  const [activeSize, setActiveSize] = useState("");
   const [quantity, setQuantity] = useState(1);
-const handleBuyNow = () => {
-addToCart({
-  id: product.id,
-  img: product.img,
-  title: product.title,
-    price: Number(String(product.price).replace(/[^0-9.]/g, "")),// NUMBER-a store panrom
-  size: activeSize,
-  quantity: Number(quantity) || 1,
-})
-  navigate("/cart");
-};
+  const [isWishlisted, setIsWishlisted] = useState(false);
+  const [activeImg, setActiveImg] = useState("");
 
-// Check if product already in wishlist (initial state)
-const [isWishlisted, setIsWishlisted] = useState(
-  wishlist.some(item => item.id === product.id)
-);
+  // --- set products list when fetch done ---
+  useEffect(() => {
+    if (!loading && !error && products) {
+      setAllProductsList(products);
+    }
+  }, [products, loading, error]);
 
-// Toggle wishlist function
-const handleWishlist = () => {
-  if (!isWishlisted) {
-    addToWishlist({
+  // --- current product ---
+  const product = location.state || allProductsList.find((p) => p.id === parseInt(id));
+
+  // --- initialize states based on product safely ---
+  useEffect(() => {
+    if (product) {
+      const type = product.type || "bottle";
+      setActiveImg(location.state?.img || imgMap[product.img] || imgMap[type]);
+      setActiveSize(sizesByType[type]?.[0] || "");
+      setIsWishlisted(wishlist.some((item) => item.id === product.id));
+    }
+  }, [product, location.state, wishlist]);
+
+  // --- guards (conditional rendering) ---
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error loading products</p>;
+  if (!product) return <p>Loading product...</p>;
+
+  const productType = product.type || "bottle";
+  const initialMainImg = location.state?.img || imgMap[productType];
+  const thumbs = thumbsByType[productType] || [initialMainImg];
+
+  const productCategory = product?.type ? (categoryMap[product.type] || product.type).toLowerCase() : null;
+
+  const relatedProducts =
+    allProductsList.length > 0
+      ? allProductsList.filter((p) => p.id !== product.id && p.type === product.type)
+      : [];
+
+  // --- handlers ---
+  const handleBuyNow = () => {
+    addToCart({
       id: product.id,
       img: product.img,
       title: product.title,
-      price: product.price,
       type: product.type,
+      price: Number(String(product.price).replace(/[^0-9.]/g, "")),
+      size: activeSize,
+      quantity: Number(quantity) || 1,
     });
-  } else {
-    removeFromWishlist(product.id);
-  }
-  setIsWishlisted(!isWishlisted);
-};
+    navigate("/cart");
+  };
 
+  const handleWishlist = () => {
+    if (!isWishlisted) {
+      addToWishlist({
+        id: product.id,
+        img: product.img,
+        title: product.title,
+        price: product.price,
+        type: product.type,
+      });
+    } else {
+      removeFromWishlist(product.id);
+    }
+    setIsWishlisted(!isWishlisted);
+  };
 
   return (
     <div className="buy-page">
       <div className="buy-top">
-        {/* LEFT SIDE */}
         <div className="buy-left">
           <div className="main-img">
             <img src={activeImg} alt="product" />
           </div>
-        <div className="thumbs">
-  {thumbs.map((img, i) => (
-    <img
-      key={i}
-      src={img}
-      onClick={() => setActiveImg(img)}
-      className={activeImg === img ? "active-thumb" : ""}
-    />
-  ))}
-</div>
-
-
+          <div className="thumbs">
+            {thumbs.map((img, i) => (
+              <img
+                key={i}
+                src={img}
+                onClick={() => setActiveImg(img)}
+                className={activeImg === img ? "active-thumb" : ""}
+              />
+            ))}
+          </div>
         </div>
-
-        {/* RIGHT SIDE */}
+         {/* RIGHT SIDE */}
         <div className="buy-right">
           <h1 className="product-title">{product.title}</h1>
 
@@ -189,6 +202,7 @@ const handleWishlist = () => {
   id: product.id,
   img: product.img,
   title: product.title,
+  type : product.type,
     price: Number(String(product.price).replace(/[^0-9.]/g, "")),// NUMBER-a store panrom
   size: activeSize,
   quantity: Number(quantity) || 1,
@@ -366,23 +380,28 @@ const handleWishlist = () => {
         </div>
       </div>
 
-      {/* RELATED PRODUCTS */}
+      {/* Related products */}
       <div className="related-section">
         <h4 style={{ marginBottom: "20px" }}>Related Products</h4>
-        <div className="related-grid">
-          {allProducts.map((p) => (
-            <ProductCard
-              key={p.id}
-              id={p.id}
-              img={p.img}
-              title={p.title}
-              price={p.price}
-              type={p.type}
-              oldPrice="1,400.00"
-              para="Best Selling – 200+ Bought last Month"
-            />
-          ))}
-        </div>
+<div className="related-grid">
+  {relatedProducts.length > 0 ? (
+    relatedProducts.map((p) => (
+<ProductCard
+  key={p.id}
+  id={p.id}
+img={imgMap[p.img] || p.img} 
+  title={p.title}
+  price={p.price}
+  type={p.type}
+  oldPrice={p.oldPrice}
+  para={p.para}
+/>
+    ))
+  ) : (
+    <p>No related products found.</p>
+  )}
+</div>
+
       </div>
     </div>
   );

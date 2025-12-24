@@ -11,7 +11,7 @@ function Footer() {
       return;
     }
     alert(`Subscribed successfully with ${email}!`);
-    setEmail(""); // clear input
+    setEmail("");
   };
   return (
     <footer className="footer">
@@ -19,25 +19,25 @@ function Footer() {
 
         {/* Brand */}
         <div className="footer-section brand">
-          <h1 style={{textAlign : "center" }}>JCS Enterprises</h1>
-          <p style={{textAlign : "center"}}>Crafted for Durability.<br />Designed for You.</p>
+          <h1 style={{ textAlign: "center" }}>JCS Enterprises</h1>
+          <p style={{ textAlign: "center" }}>Crafted for Durability.<br />Designed for You.</p>
 
           <div className="follow-us">
-            <p style={{textAlign : "center",fontWeight : "bold"}}>Follow Us</p>
+            <p style={{ textAlign: "center", fontWeight: "bold" }}>Follow Us</p>
             <div className="social-icons" style={{ textAlign: "center" }}>
-  <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer">
-    <i className="fa-brands fa-whatsapp"></i>
-  </a>
-  <a href="https://twitter.com/yourprofile" target="_blank" rel="noopener noreferrer">
-    <i className="fa-brands fa-x-twitter"></i>
-  </a>
-  <a href="https://facebook.com/yourprofile" target="_blank" rel="noopener noreferrer">
-    <i className="fa-brands fa-facebook-f"></i>
-  </a>
-  <a href="https://instagram.com/yourprofile" target="_blank" rel="noopener noreferrer">
-    <i className="fa-brands fa-instagram"></i>
-  </a>
-</div>
+              <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer">
+                <i className="fa-brands fa-whatsapp"></i>
+              </a>
+              <a href="https://twitter.com/yourprofile" target="_blank" rel="noopener noreferrer">
+                <i className="fa-brands fa-x-twitter"></i>
+              </a>
+              <a href="https://facebook.com/yourprofile" target="_blank" rel="noopener noreferrer">
+                <i className="fa-brands fa-facebook-f"></i>
+              </a>
+              <a href="https://instagram.com/yourprofile" target="_blank" rel="noopener noreferrer">
+                <i className="fa-brands fa-instagram"></i>
+              </a>
+            </div>
 
           </div>
         </div>
@@ -65,16 +65,16 @@ function Footer() {
         </div>
 
         {/* Newsletter */}
-<div className="footer-section">
-  <h4>Newsletter</h4>
-  <input
-    type="email"
-    placeholder="Enter your email"
-    value={email}
-    onChange={(e) => setEmail(e.target.value)}
-  />
-  <button type="button" onClick={handleSubscribe}>SUBSCRIBE</button>
-</div>
+        <div className="footer-section">
+          <h4>Newsletter</h4>
+          <input
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <button type="button" onClick={handleSubscribe}>SUBSCRIBE</button>
+        </div>
 
 
       </div>
